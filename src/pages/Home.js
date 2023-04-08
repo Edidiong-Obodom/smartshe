@@ -74,22 +74,19 @@ const Home = () => {
           </div>
         </div>
 
-        <div ref={ref}>
-          <motion.div animate={animation}>
-            <div className="container pitch pushDown-1">
-              <span className="atGrabl brown block center bold">
-                Who We Are
-              </span>
-              <span className="atGrab1 centerMarg black block mb-2 li miter">
-                About Us
-              </span>
-              <span className="block gray limiter">
-                SmartShe is an instant digital invoice discounting and
-                purchasing order finance, for African SMBs. We aim to allow
-                African SMBs use their Invoices / Receivables to get easy and
-                fast access to finance, in order to fulfil their business
-                operational needs.
-              </span>
+        <div className="container pitch pushDown-1">
+          <span className="atGrabl brown block center bold">Who We Are</span>
+          <span className="atGrab1 centerMarg black block mb-2 li miter">
+            About Us
+          </span>
+          <span className="block gray limiter">
+            SmartShe is an instant digital invoice discounting and purchasing
+            order finance, for African SMBs. We aim to allow African SMBs use
+            their Invoices / Receivables to get easy and fast access to finance,
+            in order to fulfil their business operational needs.
+          </span>
+          <div ref={ref}>
+            <motion.div animate={animation}>
               <div className="oursolGrid">
                 <div className="bg-gray solItem center">
                   <span className="block paddTB mb-2 centerMarg atGrab-1 limiter underline">
@@ -120,8 +117,8 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
 
         {/* <motion.div
@@ -202,9 +199,7 @@ const Home = () => {
           transition={{ duration: 0.5 }}
         >
           <div className="container pitch pushDown-1">
-            <span className="atGrabl brown block center bold">
-              How We Work
-            </span>
+            <span className="atGrabl brown block center bold">How We Work</span>
             <span className="atGrab1 centerMarg black block mb-2 limiter">
               Our Operating Model
             </span>

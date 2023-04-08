@@ -5,7 +5,6 @@ const Signup = () => {
   return (
     <>
       <RegisterView />
-      <Footer/>
     </>
   );
 };
