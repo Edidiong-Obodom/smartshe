@@ -1,0 +1,13 @@
+.loginBody{
+    background-color: #1E1E1E;
+    height: 100dvh;
+    padding-top: 4rem;
+}
+
+.LoginCard{
+    display: flex;
+    background-color: #197FFC;
+    width: 1000px;
+    height: 500px;
+    margin: 0 auto;
+}

@@ -1,0 +1,30 @@
+.leftHandside{
+    color: white;
+    flex: 1;
+}
+.rightHandside{
+    background-color: white;
+    color: black;
+    flex: 1;
+}
+
+.margAuto{
+    margin: 10% 10%;
+}
+
+.subMessage{
+    color: #BCBCBC;
+}
+
+.underLineBlue:hover{
+    border-bottom: 2px solid #1684FB;
+}
+
+.floatRight{
+    float: right;
+}
+
+.continue{
+    background-color: #E51B48;
+    color: white;
+}

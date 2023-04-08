@@ -1,0 +1,56 @@
+.bodimg{
+    color: #ff914d;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+@media (max-height: 600px) {
+    .bodimg{
+        margin-top: 0;
+    }
+}
+
+.bod h3{
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.white{
+    background-color: white;
+}
+
+.eye{
+    background-color: #ff914d;
+    color: white;
+}
+.eye:hover{
+    background-color: #ff914d;
+    color: white;
+}
+.login{
+    background-color: #ff914d;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.login:hover{
+    background-color: #ff914d;
+    color: white;
+}
+
+.signup{
+    background-color: white;
+    color: #ff914d;
+    border: 1px solid #ff914d;
+}
+
+.signup:hover{
+    background-color: #ff914d;
+    color: white;
+}
+
+.forgot{
+    text-decoration: none;
+    color: #ff914d;
+}
