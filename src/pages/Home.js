@@ -79,11 +79,13 @@ const Home = () => {
           <span className="atGrab1 centerMarg black block mb-2 limiter">
             About Us
           </span>
-          <span className="block gray container">
-            SmartShe is an instant digital invoice discounting and purchasing
-            order finance, for African SMBs. We aim to allow African SMBs use
-            their Invoices / Receivables to get easy and fast access to finance,
-            in order to fulfil their business operational needs.
+          <span className="centerpartial">
+            <span className="block gray container">
+              SmartShe is an instant digital invoice discounting and purchasing
+              order finance, for African SMBs. We aim to allow African SMBs use
+              their Invoices / Receivables to get easy and fast access to
+              finance, in order to fulfil their business operational needs.
+            </span>
           </span>
           <div ref={ref}>
             <motion.div animate={animation}>
@@ -131,10 +133,12 @@ const Home = () => {
           <span className="atGrab1 centerMarg black block mb-2 limiter">
             Our Services
           </span>
-          <span className="block gray container">
-            Changing over 80 million SMBs businesses and financing option
-            through Invoice Discounting. We take 9% commission on each
-            transaction.
+          <span className="centerpartial">
+            <span className="block gray container">
+              Changing over 80 million SMBs businesses and financing option
+              through Invoice Discounting. We take 9% commission on each
+              transaction.
+            </span>
           </span>
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
@@ -157,12 +161,14 @@ const Home = () => {
                 <span className="block paddTB mb-2 centerMarg atGrab-1 underline">
                   Instant Working Capital
                 </span>
-                <div className="gray container">
-                  We are a B2B2C supply chain financing system that provides
-                  timely working capital solution to all marginalized businesses
-                  in Africa. The idea is to ensure these businesses have an easy
-                  access to powering their profitable businesses using SmartSHE
-                  platform
+                <div className="gray container left">
+                  <span>
+                    We are a B2B2C supply chain financing system that provides
+                    timely working capital solution to all marginalized
+                    businesses in Africa. The idea is to ensure these businesses
+                    have an easy access to powering their profitable businesses
+                    using SmartSHE platform
+                  </span>
                 </div>
               </div>
               <div className="solItem center bottomShadow">
@@ -180,13 +186,15 @@ const Home = () => {
                 <span className="block paddTB mb-2 centerMarg atGrab-1 underline">
                   Invoice discounting
                 </span>
-                <div className="gray container">
-                  We are a B2B Invoice Discount platform that helps both
-                  Vendors/ Enterprises run efficiently, as we make seamless
-                  provision for Supplier Financing. The company’s unpaid
-                  Invoices are used as a collateral for a loan, which hereby
-                  enable those companies and contractors to leverage the value
-                  of their sales ledger.
+                <div className="gray container left">
+                  <span>
+                    We are a B2B Invoice Discount platform that helps both
+                    Vendors/ Enterprises run efficiently, as we make seamless
+                    provision for Supplier Financing. The company’s unpaid
+                    Invoices are used as a collateral for a loan, which hereby
+                    enable those companies and contractors to leverage the value
+                    of their sales ledger.
+                  </span>
                 </div>
               </div>
             </div>
