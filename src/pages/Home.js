@@ -76,10 +76,10 @@ const Home = () => {
 
         <div className="container pitch pushDown-1">
           <span className="atGrabl brown block center bold">Who We Are</span>
-          <span className="atGrab1 centerMarg black block mb-2 li miter">
+          <span className="atGrab1 centerMarg black block mb-2 limiter">
             About Us
           </span>
-          <span className="block gray limiter">
+          <span className="block gray container">
             SmartShe is an instant digital invoice discounting and purchasing
             order finance, for African SMBs. We aim to allow African SMBs use
             their Invoices / Receivables to get easy and fast access to finance,
@@ -131,7 +131,7 @@ const Home = () => {
           <span className="atGrab1 centerMarg black block mb-2 limiter">
             Our Services
           </span>
-          <span className="block gray limiter centerMarg">
+          <span className="block gray container">
             Changing over 80 million SMBs businesses and financing option
             through Invoice Discounting. We take 9% commission on each
             transaction.
