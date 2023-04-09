@@ -39,8 +39,8 @@ const CustomerDis = () => {
 
   
   const [isAuthenticating, setIsAuthenticating] = useState(false);
-  const [isTab, setIsTab] = useState(false);
-  const [isempty, setIsEmpty] = useState(false);
+  // const [isTab, setIsTab] = useState(false);
+  // const [isempty, setIsEmpty] = useState(false);
 
   const getUser = useCallback(async () => {
     setIsAuthenticating(true);
@@ -57,13 +57,13 @@ const CustomerDis = () => {
         .then(function (jsonData) {
           setData(jsonData);
           setIsAuthenticating(false);
-          if (jsonData === "Email in use by another user...") {
+          // if (jsonData === "Email in use by another user...") {
             
-            return setIsEmpty(true);
-          } else if(jsonData !== "Email in use by another user..."){
+          //   return setIsEmpty(true);
+          // } else if(jsonData !== "Email in use by another user..."){
             
-            return setIsTab(true);
-          }
+          //   return setIsTab(true);
+          // }
         });
     } catch (err) {
       console.error(err.message);
@@ -78,7 +78,9 @@ const CustomerDis = () => {
     return navigate("/");
   };
 
-  if (!isTab && !isempty && isAuthenticating) {
+  // if (!isTab && !isempty && isAuthenticating) 
+  if (isAuthenticating) 
+  {
     // Result when user is still being authenticated
     return (
       <div className="center centerFlex1">
@@ -88,56 +90,28 @@ const CustomerDis = () => {
         ></div>
       </div>
     );
-  } else if (!isTab && isempty && !isAuthenticating) {
-    return (
-      <>
-        <div className="fixedct-top bg-white bottomShadow">
-          <div className="centerMarg center stuff limiter" onClick={refresh}>
-            <img src={logo} alt="smartsheLogo" width="80px" />
-            <h3 className="brown inlineBlock">SmartSHE</h3>
-          </div>
-        </div>
+  } 
+  // else if (!isTab && isempty && !isAuthenticating) {
+  //   return (
+  //     <>
+  //       <div className="fixed-top bg-white bottomShadow">
+  //         <div className="centerMarg center stuff limiter" onClick={refresh}>
+  //           <img src={logo} alt="smartsheLogo" width="80px" />
+  //           <h3 className="brown inlineBlock">SmartSHE</h3>
+  //         </div>
+  //       </div>
         
-      <div className="center centerFlex1">
-        <div
-          className="atGrab1"
-        >No Clients Yet</div>
-      </div>
-      </>
-    );
-  } else if (isTab && !isempty && !isAuthenticating) {
-    //  const dat1 = datii.map((data) => {
-    //     return (
-    //       <>
-    //       <h1>{data.client_id}</h1>
-    //       <tr className="container" key={data.client_id}>
-    //         <td>
-    //           <span className="brown">{data.client_id}</span>
-    //         </td>
-    //         <td>
-    //           {data.client_email}
-    //         </td>
-    //         <td>
-    //           {data.client_name}
-    //         </td>
-    //         <td>
-    //           {data.client_phoneno}
-    //         </td>
-    //         <td>
-    //           {data.client_reg}
-    //         </td>
-    //         <td>
-    //         {moment(data.c_date).format(
-    //                 "MMMM Do YYYY"
-    //               )}
-    //         </td>
-    //         <td>
-    //           {data.c_time}
-    //         </td>
-    //         </tr>
-    //       </>
-    //     );
-    //   })
+  //     <div className="center centerFlex1">
+  //       <div
+  //         className="atGrab1"
+  //       >No Clients Yet</div>
+  //     </div>
+  //     </>
+  //   );
+  // } 
+  // else if (isTab && !isempty && !isAuthenticating) 
+  else  
+  {
     return (
       <>
         <div className="fixedct-top bg-white bottomShadow">

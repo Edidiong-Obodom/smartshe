@@ -72,7 +72,9 @@ code {
 .rightHandside {
   flex: 1;
 }
-
+.forty{
+  height: 1vh;
+}
 .white {
   color: white;
 }
