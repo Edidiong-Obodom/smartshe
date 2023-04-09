@@ -71,7 +71,7 @@ const RegisterView = () => {
     return navigate("/");
   };
 
-  if (success) {
+  if (!success) {
     return (
       <>
         <div className="container fixed-top">
