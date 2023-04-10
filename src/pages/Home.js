@@ -52,7 +52,7 @@ const Home = () => {
                 transition={{ duration: 0.5 }}
               >
                 <div className="white atGrab container centerpartial">
-                  <span>AFRICAN INVOICE DISCOUNTING FINANCIAL COMPANY</span>
+                  <span>INVOICE DISCOUNT FINANCING COMPANY</span>
                   <span className="atGrabL block mt-2">
                     Coming soon, register now to get a discount.
                   </span>
