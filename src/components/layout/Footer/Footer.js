@@ -57,11 +57,11 @@ const Footer = () => {
                 About Us
               </span>
               <span className="block paddTB">
-                SmartSHE is an instant digital invoice discounting and
-                purchasing order finance, for African SMBs. We aim to allow
-                African SMBs use their Invoices / Receivables to get easy and
-                fast access to finance, in order to fulfil their business
-                operational needs.
+                Welcome to SmartSHE. An online Invoice Discounting 
+              Infrastructure for all African SMBs.
+              SmartSHE is a B2B supply chain financing system that provides
+              timely Invoice Discounting, Procurement Financing and working 
+              capital financing for all marginalized African SMBs.
               </span>
             </div>
           </div>
