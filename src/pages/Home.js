@@ -81,10 +81,11 @@ const Home = () => {
           </span>
           <span className="centerpartial">
             <span className="block gray container">
-              SmartShe is an instant digital invoice discounting and purchasing
-              order finance, for African SMBs. We aim to allow African SMBs use
-              their Invoices / Receivables to get easy and fast access to
-              finance, in order to fulfil their business operational needs.
+              Welcome to SmartSHE. An online Invoice Discounting 
+              Infrastructure for all African SMBs.
+              SmartSHE is a B2B supply chain financing system that provides
+              timely Invoice Discounting, Procurement Financing and working 
+              capital financing for all marginalized African SMBs.
             </span>
           </span>
           <div ref={ref}>
@@ -159,7 +160,7 @@ const Home = () => {
                   }}
                 ></div>
                 <span className="block paddTB mb-2 centerMarg atGrab-1 underline">
-                  Instant Working Capital
+                  Procurement Order Financing 
                 </span>
                 <div className="gray container left">
                   <span>
