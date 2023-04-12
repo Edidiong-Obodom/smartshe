@@ -166,8 +166,7 @@ const RegisterView = () => {
                     className="form-control"
                     id="RegNo"
                     autoComplete="off"
-                    minLength="8"
-                    maxLength="8"
+                    maxLength="9"
                     pattern="[A-Za-z0-9]+"
                     value={userReg}
                     onChange={(e) => setUserReg(e.target.value)}
