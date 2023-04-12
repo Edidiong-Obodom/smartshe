@@ -125,6 +125,7 @@ const CustomerDis = () => {
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <StyledTableRow>
+                <StyledTableCell>S/N</StyledTableCell>
                 <StyledTableCell>Company Name</StyledTableCell>
                 <StyledTableCell align="right">ID</StyledTableCell>
                 <StyledTableCell align="right">Email</StyledTableCell>
@@ -135,13 +136,16 @@ const CustomerDis = () => {
               </StyledTableRow>
             </TableHead>
             <TableBody>
-              {datii.map((row) => {
+              {datii.map((row, i) => {
                 return (
                   <>
                     <StyledTableRow
                       key={row.client_name}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
+                      <StyledTableCell component="th" scope="row">
+                        {Number(i) + Number (1)}
+                      </StyledTableCell>
                       <StyledTableCell component="th" scope="row">
                         {row.client_name}
                       </StyledTableCell>
