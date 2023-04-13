@@ -9,18 +9,18 @@ import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
-import TableFooter from '@mui/material/TableFooter';
-import TablePagination from '@mui/material/TablePagination';
+import TableFooter from "@mui/material/TableFooter";
+import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import IconButton from '@mui/material/IconButton';
-import FirstPageIcon from '@mui/icons-material/FirstPage';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import LastPageIcon from '@mui/icons-material/LastPage';
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import PropTypes from 'prop-types';
+import IconButton from "@mui/material/IconButton";
+import FirstPageIcon from "@mui/icons-material/FirstPage";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import LastPageIcon from "@mui/icons-material/LastPage";
+import { useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import PropTypes from "prop-types";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -69,28 +69,36 @@ function TablePaginationActions(props) {
         disabled={page === 0}
         aria-label="first page"
       >
-        {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
+        {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
       </IconButton>
       <IconButton
         onClick={handleBackButtonClick}
         disabled={page === 0}
         aria-label="previous page"
       >
-        {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowRight />
+        ) : (
+          <KeyboardArrowLeft />
+        )}
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label="next page"
       >
-        {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowLeft />
+        ) : (
+          <KeyboardArrowRight />
+        )}
       </IconButton>
       <IconButton
         onClick={handleLastPageButtonClick}
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label="last page"
       >
-        {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
+        {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
       </IconButton>
     </Box>
   );
@@ -103,13 +111,11 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-
 const CustomerDis = () => {
   // sets location and navigation
   let navigate = useNavigate();
   const [datii, setData] = useState([]);
 
-  
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   // const [isTab, setIsTab] = useState(false);
   // const [isempty, setIsEmpty] = useState(false);
@@ -130,10 +136,10 @@ const CustomerDis = () => {
           setData(jsonData);
           setIsAuthenticating(false);
           // if (jsonData === "Email in use by another user...") {
-            
+
           //   return setIsEmpty(true);
           // } else if(jsonData !== "Email in use by another user..."){
-            
+
           //   return setIsTab(true);
           // }
         });
@@ -165,19 +171,15 @@ const CustomerDis = () => {
     setPage(0);
   };
 
-  // if (!isTab && !isempty && isAuthenticating) 
-  if (isAuthenticating) 
-  {
+  // if (!isTab && !isempty && isAuthenticating)
+  if (isAuthenticating) {
     // Result when user is still being authenticated
     return (
       <div className="center centerFlex1">
-        <div
-          style={{ display: "inline-block" }}
-          className="loaderBig"
-        ></div>
+        <div style={{ display: "inline-block" }} className="loaderBig"></div>
       </div>
     );
-  } 
+  }
   // else if (!isTab && isempty && !isAuthenticating) {
   //   return (
   //     <>
@@ -187,7 +189,7 @@ const CustomerDis = () => {
   //           <h3 className="brown inlineBlock">SmartSHE</h3>
   //         </div>
   //       </div>
-        
+
   //     <div className="center centerFlex1">
   //       <div
   //         className="atGrab1"
@@ -195,10 +197,9 @@ const CustomerDis = () => {
   //     </div>
   //     </>
   //   );
-  // } 
-  // else if (isTab && !isempty && !isAuthenticating) 
-  else  
-  {
+  // }
+  // else if (isTab && !isempty && !isAuthenticating)
+  else {
     return (
       <>
         <div className="fixedct-top bg-white bottomShadow">
@@ -223,7 +224,13 @@ const CustomerDis = () => {
               </StyledTableRow>
             </TableHead>
             <TableBody>
-              {datii.map((row, i) => {
+              {(rowsPerPage > 0
+                ? datii.slice(
+                    page * rowsPerPage,
+                    page * rowsPerPage + rowsPerPage
+                  )
+                : datii
+              ).map((row, i) => {
                 return (
                   <>
                     <StyledTableRow
@@ -231,7 +238,7 @@ const CustomerDis = () => {
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <StyledTableCell component="th" scope="row">
-                        {Number(i) + Number (1)}
+                        {Number(i) + Number(1)}
                       </StyledTableCell>
                       <StyledTableCell component="th" scope="row">
                         {row.client_name}
@@ -260,31 +267,31 @@ const CustomerDis = () => {
                 );
               })}
               {emptyRows > 0 && (
-            <TableRow style={{ height: 53 * emptyRows }}>
-              <TableCell colSpan={6} />
-            </TableRow>
-          )}
+                <TableRow style={{ height: 53 * emptyRows }}>
+                  <TableCell colSpan={6} />
+                </TableRow>
+              )}
             </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-              colSpan={8}
-              count={datii.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              SelectProps={{
-                inputProps: {
-                  'aria-label': 'rows per page',
-                },
-                native: true,
-              }}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-              ActionsComponent={TablePaginationActions}
-            />
-          </TableRow>
-        </TableFooter>
+            <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                  colSpan={8}
+                  count={datii.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                    inputProps: {
+                      "aria-label": "rows per page",
+                    },
+                    native: true,
+                  }}
+                  onPageChange={handleChangePage}
+                  onRowsPerPageChange={handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationActions}
+                />
+              </TableRow>
+            </TableFooter>
           </Table>
         </TableContainer>
       </>
