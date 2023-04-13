@@ -122,8 +122,8 @@ const CustomerDis = () => {
         </div>
 
         <TableContainer className={"pushDownMain"} component={Paper}>
-          <Table className={"fixedct-top"} sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead className={"fixedct-top"}>
               <StyledTableRow>
                 <StyledTableCell>S/N</StyledTableCell>
                 <StyledTableCell>Company Name</StyledTableCell>
