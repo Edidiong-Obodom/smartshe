@@ -72,7 +72,7 @@ code {
 .rightHandside {
   flex: 1;
 }
-.forty{
+.forty {
   height: 1vh;
 }
 .white {
@@ -87,13 +87,13 @@ code {
 .bg-black {
   background-color: black;
 }
-.green{
+.green {
   color: green;
 }
-.bg-green{
+.bg-green {
   background-color: green;
 }
-.red{
+.red {
   color: red;
 }
 .brown {
@@ -299,9 +299,9 @@ ul li::before {
   animation: spin 2s linear infinite;
 }
 
-.loaderBig{
+.loaderBig {
   border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #E4E9FD; /* Blue */
+  border-top: 16px solid #e4e9fd; /* Blue */
   border-right: 16px solid #fd7e2b;
   border-left: 16px solid #fd7e2b;
   border-bottom: 16px solid #fd7e2b;
@@ -310,6 +310,16 @@ ul li::before {
   height: 120px;
   align-content: center;
   animation: spin 2s linear infinite;
+}
+
+.iconAb {
+  color: #f8a46c;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.iconAb:hover{
+  color: #fd7e2b;
 }
 
 @keyframes spin {
@@ -323,10 +333,10 @@ ul li::before {
 .cardi {
   /* Add shadows to create the "card" effect */
   text-align: center;
-  color: #A683E3;
+  color: #a683e3;
   background-color: white;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
 @media (min-width: 750px) {
   .centerpartial {
     text-align: center;

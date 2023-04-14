@@ -124,6 +124,9 @@ const Home = () => {
           </div>
           <div className="ourserGrid container">
             <div>
+              <span className="brown block center bold">
+              <i className={`fas fa-bullseye iconAb`}></i>
+                </span>
               <span className="atGrabl brown block center bold">
                 Our Vision
               </span>
@@ -132,6 +135,10 @@ const Home = () => {
               </div>
             </div>
             <div>
+              
+            <span className="brown block center bold">
+              <i className={`fas fa-check-circle iconAb`}></i>
+                </span>
               <span className="atGrabl brown block center bold">
                 Our Mission
               </span>
