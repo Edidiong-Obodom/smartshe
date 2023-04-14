@@ -125,8 +125,13 @@ const Home = () => {
           <div className="ourserGrid container">
             <div>
               <span className="brown block center bold">
-              <i className={`fas fa-bullseye iconAb`}></i>
-                </span>
+                <motion.div
+                  whileInView={{ rotate: 360 }}
+                  transition={{ from: 0, duration: 2 }}
+                >
+                  <i className={`fas fa-bullseye iconAb`}></i>
+                </motion.div>
+              </span>
               <span className="atGrabl brown block center bold">
                 Our Vision
               </span>
@@ -135,10 +140,14 @@ const Home = () => {
               </div>
             </div>
             <div>
-              
-            <span className="brown block center bold">
-              <i className={`fas fa-check-circle iconAb`}></i>
-                </span>
+              <span className="brown block center bold">
+                <motion.div
+                  whileInView={{ rotate: 360 }}
+                  transition={{ from: 0, duration: 2 }}
+                >
+                  <i className={`fas fa-check-circle iconAb`}></i>
+                </motion.div>
+              </span>
               <span className="atGrabl brown block center bold">
                 Our Mission
               </span>
