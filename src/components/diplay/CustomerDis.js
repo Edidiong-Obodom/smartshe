@@ -238,7 +238,8 @@ const CustomerDis = () => {
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <StyledTableCell component="th" scope="row">
-                        {Number(i) + Number(1)}
+                        {/* {Number(i) + Number(1)} */}
+                        {row.row_number}
                       </StyledTableCell>
                       <StyledTableCell component="th" scope="row">
                         {row.client_name}
