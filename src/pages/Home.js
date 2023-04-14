@@ -81,11 +81,11 @@ const Home = () => {
           </span>
           <span className="centerpartial">
             <span className="block gray container">
-              Welcome to SmartSHE. An online Invoice Discounting 
-              Infrastructure for all African SMBs.
-              SmartSHE is a B2B supply chain financing system that provides
-              timely Invoice Discounting, Procurement Financing and working 
-              capital financing for all marginalized African SMBs.
+              Welcome to SmartSHE. An online Invoice Discounting Infrastructure
+              for all African SMBs. SmartSHE is a B2B supply chain financing
+              system that provides timely Invoice Discounting, Procurement
+              Financing and working capital financing for all marginalized
+              African SMBs.
             </span>
           </span>
           <div ref={ref}>
@@ -121,6 +121,26 @@ const Home = () => {
                 </div>
               </div>
             </motion.div>
+          </div>
+          <div className="ourserGrid container">
+            <div>
+              <span className="atGrabl brown block center bold">
+                Our Vision
+              </span>
+              <div className="gray container">
+                To be Africa's quickest gateway for Invoice Discount Financing.
+              </div>
+            </div>
+            <div>
+              <span className="atGrabl brown block center bold">
+                Our Mission
+              </span>
+              <div className="gray container">
+                To build an Invoice Discounting Infrastructure that will help
+                secure the future and economic wealth of 80million SMBs in
+                Africa.
+              </div>
+            </div>
           </div>
         </div>
 
@@ -160,7 +180,7 @@ const Home = () => {
                   }}
                 ></div>
                 <span className="block paddTB mb-2 centerMarg atGrab-1 underline">
-                  Procurement Order Financing 
+                  Procurement Order Financing
                 </span>
                 <div className="gray container left">
                   <span>
