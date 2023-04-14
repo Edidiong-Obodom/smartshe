@@ -220,7 +220,7 @@ const CustomerDis = () => {
                 <StyledTableCell align="right">Phone</StyledTableCell>
                 <StyledTableCell align="right">CAC Reg</StyledTableCell>
                 <StyledTableCell align="right">Date</StyledTableCell>
-                <StyledTableCell align="right">Time</StyledTableCell>
+                <StyledTableCell align="right">Time(UTC)</StyledTableCell>
               </StyledTableRow>
             </TableHead>
             <TableBody>
