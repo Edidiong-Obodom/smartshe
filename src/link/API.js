@@ -1,2 +1,2 @@
-const api = "https://smartshe-api.onrender.com";
+const api = "https://smartshe-server.onrender.com";
 export {api};
