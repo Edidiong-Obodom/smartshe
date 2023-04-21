@@ -5,7 +5,7 @@ import { logo } from "../../images/images";
 import { api } from "../../link/API";
 import { motion } from "framer-motion";
 
-const RegisterView = () => {
+const TestRegister = () => {
   // values inputed in the form
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,6 +20,9 @@ const RegisterView = () => {
   const [show, setshow] = useState(false);
   const [eye, setEye] = useState("fa-eye-slash");
   const pass = useRef();
+
+  // cac
+  const [cacVerified, setCAC] = useState(false);
 
   // error messages and status
   const [loginError, setLoginError] = useState("");
@@ -72,37 +75,119 @@ const RegisterView = () => {
     return navigate("/");
   };
 
-  if (success) {
-    return (
-      <>
-        <div className="container fixed-top">
-          <div className="container brown stuff" onClick={handlePostBack}>
-            <h5>
-              <i className="fa-solid mt-2 fa-chevron-left"></i> Home
-            </h5>
-          </div>
-        </div>
-        <div className="centerFlex1">
-          <div className="">
-            <div className="center brown centerF1">
-              <i className="atGrabMassive fa-solid fa-square-check"></i>
+  const verifyCAC = async (e) => {
+    e.preventDefault();
+    const searchTerm = userReg;
+    try {
+      setLoading(true);
+      await fetch(`${api}/verifycac`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          searchTerm,
+        }),
+      })
+        .then((res) => {
+          if (res.status !== 200) {
+            setLoading(false);
+            setLoginError("Something went wrong somewhere...");
+            return setDip("block");
+            
+          } else {
+            return res.json();
+          }
+        })
+        .then((data) => {
+          setLoading(false);
+          setCAC(true);
+          console.log(data.data[0].approvedName);
+          console.log(data.data[0].address);
+          return console.log(data.data[0].companyStatus);
+        });
+    } catch (error) {}
+  };
+  const formDisplay = () => {
+    if (!cacVerified) {
+      return (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className={` mt-1 mb-4 ${classes.bod} form-signin`}>
+            <img
+              className={`${classes.bodimg} block centerMarg`}
+              src={logo}
+              alt="smartsheLogo"
+              width="120px"
+            />
+            {/* <h3>SmartSHE</h3> */}
+            <div className="container">
+              {loginError && ( // then if changed flag is false show error message.
+                <div
+                  className="container"
+                  style={{ color: "red", display: { dip } }}
+                >
+                  <span>{loginError}</span>
+                </div>
+              )}
+              {/* <form className="container"> */}
+              <form className="container" onSubmit={verifyCAC}>
+                <div className="mb-1">
+                  <label htmlFor="mail1" className="form-label">
+                    <span className="red">*</span> Company's name
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="mail1"
+                    autoComplete="off"
+                    aria-describedby="mailHelp"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="RegNo" className="form-label">
+                    <span className="red">*</span> Company's CAC RegNo
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="RegNo"
+                    autoComplete="off"
+                    maxLength="9"
+                    pattern="[A-Za-z0-9]+"
+                    value={userReg}
+                    onChange={(e) => setUserReg(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="d-grid gap-2 ">
+                  <button
+                    className={`btn bold bg-brown bottomShadow btnct btnct-white ${classes.login}`}
+                    type="submit"
+                  >
+                    {loading ? (
+                      <>
+                        <div
+                          style={{ display: "inline-block" }}
+                          className="load"
+                        ></div>
+                      </>
+                    ) : (
+                      <>Verify Your CAC Reg No</>
+                    )}
+                  </button>
+                </div>
+              </form>
             </div>
-            <div className=" atGrab1">Registeration Successful!</div>
           </div>
-        </div>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <div className="container">
-          <div className="container brown stuff" onClick={handlePostBack}>
-            <h5>
-              <i className="fa-solid mt-2 fa-chevron-left"></i> Home
-            </h5>
-          </div>
-        </div>
-
+        </motion.div>
+      );
+    } else {
+      return (
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -153,8 +238,7 @@ const RegisterView = () => {
                     autoComplete="off"
                     aria-describedby="mailHelp"
                     value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
-                    required
+                    readOnly
                   />
                 </div>
                 <div className="mb-1">
@@ -169,8 +253,7 @@ const RegisterView = () => {
                     maxLength="9"
                     pattern="[A-Za-z0-9]+"
                     value={userReg}
-                    onChange={(e) => setUserReg(e.target.value)}
-                    required
+                    readOnly
                   />
                 </div>
                 <div className="mb-1">
@@ -238,9 +321,43 @@ const RegisterView = () => {
             </div>
           </div>
         </motion.div>
+      );
+    }
+  };
+  if (success) {
+    return (
+      <>
+        <div className="container fixed-top">
+          <div className="container brown stuff" onClick={handlePostBack}>
+            <h5>
+              <i className="fa-solid mt-2 fa-chevron-left"></i> Home
+            </h5>
+          </div>
+        </div>
+        <div className="centerFlex1">
+          <div className="">
+            <div className="center brown centerF1">
+              <i className="atGrabMassive fa-solid fa-square-check"></i>
+            </div>
+            <div className=" atGrab1">Registeration Successful!</div>
+          </div>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div className="container">
+          <div className="container brown stuff" onClick={handlePostBack}>
+            <h5>
+              <i className="fa-solid mt-2 fa-chevron-left"></i> Home
+            </h5>
+          </div>
+          {formDisplay()}
+        </div>
       </>
     );
   }
 };
 
-export default RegisterView;
+export default TestRegister;
