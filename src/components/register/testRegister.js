@@ -100,9 +100,9 @@ const TestRegister = () => {
         .then((data) => {
           setLoading(false);
           setCAC(true);
-          console.log(data.data[0].approvedName);
-          console.log(data.data[0].address);
-          return console.log(data.data[0].companyStatus);
+          console.log(data.companyName);
+          console.log(data.companyAddress);
+          return console.log(data.companyStatus);
         });
     } catch (error) {}
   };
