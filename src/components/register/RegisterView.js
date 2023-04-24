@@ -38,7 +38,7 @@ const RegisterView = () => {
     try {
       setLoading(true);
       //api call for sending the user data to the backend
-      await fetch(`${api}/signup`, {
+      await fetch(`${api}/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
