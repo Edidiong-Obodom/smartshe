@@ -11,6 +11,7 @@ const TestRegister = () => {
   const [password, setPassword] = useState("");
   const [userPhone, setUserPhone] = useState("");
   const [userName, setUserName] = useState("");
+  const [newUserName, setNewUserName] = useState("");
   const [userReg, setUserReg] = useState("");
   // handle loading on submit
   const [loading, setLoading] = useState(false);
@@ -24,9 +25,16 @@ const TestRegister = () => {
   // cac
   const [cacVerified, setCAC] = useState(false);
 
+  // email
+  const [verifyEmail, setVerifyEmail] = useState(false);
+  const [emailVerified, setEmailVerified] = useState(false);
+  const [verificationCode, setVerificationCode] = useState("");
+
   // error messages and status
-  const [loginError, setLoginError] = useState("");
-  const [dip, setDip] = useState("none");
+  const [loginError, setLoginError] = useState(
+    ""
+  );
+  const [dip, setDip] = useState(false);
 
   const navigate = useNavigate();
   //password visibility handler
@@ -36,28 +44,29 @@ const TestRegister = () => {
     pass.current.type = show ? "password" : "text";
   };
 
+  // Handles the total form submission
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
       //api call for sending the user data to the backend
-      await fetch(`${api}/signup`, {
+      await fetch(`${api}/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email,
           password,
-          userName,
+          newUserName,
           userPhone,
           userReg,
         }),
       }).then((res) => {
         if (res.status === 401) {
-          setDip("block");
+          setDip(true);
           setLoading(false);
           return setLoginError("Email already in use...");
         } else if (res.status === 411) {
-          setDip("block");
+          setDip(true);
           setLoading(false);
           return setLoginError("Something went wrong...");
         } else {
@@ -71,16 +80,18 @@ const TestRegister = () => {
     }
   };
 
+  // takes user back to homepage
   const handlePostBack = () => {
     return navigate("/");
   };
 
+  // verifies the user's CAC registeration
   const verifyCAC = async (e) => {
     e.preventDefault();
     const searchTerm = userReg;
     try {
       setLoading(true);
-      await fetch(`${api}/verifycac`, {
+      await fetch(`${api}/auth/verifycac`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -91,23 +102,91 @@ const TestRegister = () => {
           if (res.status !== 200) {
             setLoading(false);
             setLoginError("Something went wrong somewhere...");
-            return setDip("block");
-            
+            return setDip(true);
           } else {
+            setDip(false);
             return res.json();
           }
         })
         .then((data) => {
           setLoading(false);
-          setCAC(true);
-          console.log(data.companyName);
-          console.log(data.companyAddress);
-          return console.log(data.companyStatus);
+          // Compares the name gotten from CAC and the name inputed by the client
+          if (data.companyName.toUpperCase().slice(0, 4) === userName.toUpperCase().slice(0, 4)){
+            setCAC(true);
+            return setNewUserName(data.companyName);
+          } else{
+            setLoginError("The CAC name does not match the CAC registeration number, please check the name and number and try again.");
+          }
         });
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // sends the user's verification code
+  const vCodeSender = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      await fetch(`${api}/auth/verificationcode`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+        }),
+      })
+        .then((res) => {
+          if (res.status === 418) {
+            setLoading(false);
+            setLoginError("Something went wrong somewhere...");
+            return setDip(true);
+          } else if (res.status === 406) {
+            setLoading(false);
+            setLoginError("Client already exists...");
+            return setDip(true);
+          } else if (res.status === 200) {
+            res.json();
+            setDip(false);
+            return setVerifyEmail(true);
+          }
+        })
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  // verifies the user's verification code
+  const vCodeVerify = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      await fetch(`${api}/auth/emailverification`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          verificationCode,
+        }),
+      })
+        .then((res) => {
+          if (res.status === 418) {
+            setLoading(false);
+            setLoginError("Something went wrong somewhere...");
+            return setDip(true);
+          } else if (res.status === 403) {
+            setLoading(false);
+            setLoginError("Wrong code, try again...");
+            return setDip(true);
+          } else if (res.status === 200) {
+            res.json();
+            setDip(false);
+            return setEmailVerified(true);
+          }
+        })
+    } catch (error) {
+      console.error(error);
+    }
   };
   const formDisplay = () => {
-    if (!cacVerified) {
+    if (!cacVerified && !verifyEmail && !emailVerified) {
       return (
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
@@ -121,17 +200,20 @@ const TestRegister = () => {
               alt="smartsheLogo"
               width="120px"
             />
-            {/* <h3>SmartSHE</h3> */}
             <div className="container">
               {loginError && ( // then if changed flag is false show error message.
+                dip? (
+                    
                 <div
-                  className="container"
-                  style={{ color: "red", display: { dip } }}
-                >
-                  <span>{loginError}</span>
-                </div>
+                className="container"
+                style={{ color: "red"}}
+              >
+                <span>{loginError}</span>
+              </div>
+                ) : ""
               )}
-              {/* <form className="container"> */}
+
+              {/* CAC verification form */}
               <form className="container" onSubmit={verifyCAC}>
                 <div className="mb-1">
                   <label htmlFor="mail1" className="form-label">
@@ -164,7 +246,7 @@ const TestRegister = () => {
                     required
                   />
                 </div>
-                <div className="d-grid gap-2 ">
+                <div className="d-grid gap-2">
                   <button
                     className={`btn bold bg-brown bottomShadow btnct btnct-white ${classes.login}`}
                     type="submit"
@@ -177,7 +259,143 @@ const TestRegister = () => {
                         ></div>
                       </>
                     ) : (
-                      <>Verify Your CAC Reg No</>
+                      <>Verify Your CAC Registeration</>
+                    )}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </motion.div>
+      );
+    } else if (cacVerified && !verifyEmail && !emailVerified) {
+      return (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className={` mt-1 mb-4 ${classes.bod} form-signin`}>
+            <img
+              className={`${classes.bodimg} block centerMarg`}
+              src={logo}
+              alt="smartsheLogo"
+              width="120px"
+            />
+            {/* <h3>SmartSHE</h3> */}
+            <div className="container">
+              <h4 className="mb-3">{newUserName}</h4>
+              {loginError && ( // then if changed flag is false show error message.
+                dip? (
+                    
+                <div
+                className="container"
+                style={{ color: "red"}}
+              >
+                <span>{loginError}</span>
+              </div>
+                ) : ""
+              )}
+              {/* Email verification code sender form */}
+              <form className="container" onSubmit={vCodeSender}>
+                <div className="mb-1">
+                  <label htmlFor="exampleInputEmail1" className="form-label">
+                    <span className="red">*</span> Company's email
+                  </label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="exampleInputEmail1"
+                    autoComplete="off"
+                    aria-describedby="emailHelp"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
+                
+                <div className="d-grid gap-2  mt-4">
+                  <button
+                    className={`btn bold bg-brown bottomShadow btnct btnct-white ${classes.login}`}
+                    type="submit"
+                  >
+                    {loading ? (
+                      <>
+                        <div
+                          style={{ display: "inline-block" }}
+                          className="load"
+                        ></div>
+                      </>
+                    ) : (
+                      <>Next</>
+                    )}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </motion.div>
+      );
+    } else if (cacVerified && verifyEmail && !emailVerified) {
+      return (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className={` mt-1 mb-4 ${classes.bod} form-signin`}>
+            <img
+              className={`${classes.bodimg} block centerMarg`}
+              src={logo}
+              alt="smartsheLogo"
+              width="120px"
+            />
+            {/* <h3>SmartSHE</h3> */}
+            <div className="container">
+              <h4 className="mb-3">{newUserName}</h4>
+              {loginError && ( // then if changed flag is false show error message.
+                dip? (
+                    
+                <div
+                className="container"
+                style={{ color: "red"}}
+              >
+                <span>{loginError}</span>
+              </div>
+                ) : ""
+              )}
+              {/* Email verification code sender form */}
+              <form className="container" onSubmit={vCodeVerify}>
+                <div className="mb-1">
+                  <label htmlFor="vcode" className="form-label">
+                    <span className="red">*</span> Verification Code
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="vcode"
+                    autoComplete="off"
+                    aria-describedby="vcodeHelp"
+                    value={verificationCode}
+                    onChange={(e) => setVerificationCode(e.target.value)}
+                    required
+                  />
+                </div>
+                
+                <div className="d-grid gap-2 mt-4">
+                  <button
+                    className={`btn bold bg-brown bottomShadow btnct btnct-white ${classes.login}`}
+                    type="submit"
+                  >
+                    {loading ? (
+                      <>
+                        <div
+                          style={{ display: "inline-block" }}
+                          className="load"
+                        ></div>
+                      </>
+                    ) : (
+                      <>Verify Email</>
                     )}
                   </button>
                 </div>
@@ -202,60 +420,20 @@ const TestRegister = () => {
             />
             {/* <h3>SmartSHE</h3> */}
             <div className="container">
+              <h4 className="mb-3">{newUserName}</h4>
               {loginError && ( // then if changed flag is false show error message.
+                dip? (
+                    
                 <div
-                  className="container"
-                  style={{ color: "red", display: { dip } }}
-                >
-                  <span>{loginError}</span>
-                </div>
+                className="container"
+                style={{ color: "red"}}
+              >
+                <span>{loginError}</span>
+              </div>
+                ) : ""
               )}
               {/* <form className="container"> */}
               <form className="container" onSubmit={onSubmitForm}>
-                <div className="mb-1">
-                  <label htmlFor="exampleInputEmail1" className="form-label">
-                    <span className="red">*</span> Company's email
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="exampleInputEmail1"
-                    autoComplete="off"
-                    aria-describedby="emailHelp"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="mb-1">
-                  <label htmlFor="mail1" className="form-label">
-                    <span className="red">*</span> Company's name
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="mail1"
-                    autoComplete="off"
-                    aria-describedby="mailHelp"
-                    value={userName}
-                    readOnly
-                  />
-                </div>
-                <div className="mb-1">
-                  <label htmlFor="RegNo" className="form-label">
-                    <span className="red">*</span> Company's CAC RegNo
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="RegNo"
-                    autoComplete="off"
-                    maxLength="9"
-                    pattern="[A-Za-z0-9]+"
-                    value={userReg}
-                    readOnly
-                  />
-                </div>
                 <div className="mb-1">
                   <label htmlFor="phone" className="form-label">
                     <span className="red">*</span> Company's phone no
@@ -300,7 +478,7 @@ const TestRegister = () => {
                     min. 8 characters
                   </div>
                 </div>
-                <div className="d-grid gap-2 ">
+                <div className="d-grid gap-2 mt-4">
                   <button
                     className={`btn bold bg-brown bottomShadow btnct btnct-white ${classes.login}`}
                     type="submit"
