@@ -147,7 +147,8 @@ const TestRegister = () => {
             return setDip(true);
           } else if (res.status === 200) {
             res.json();
-            setDip(false);
+            setLoginError("If you don't see the verification code in your inbox, check your spam folder.");
+            setDip(true);
             setLoading(false);
             return setVerifyEmail(true);
           }
@@ -371,12 +372,13 @@ const TestRegister = () => {
               <form className="container" onSubmit={vCodeVerify}>
                 <div className="mb-1">
                   <label htmlFor="vcode" className="form-label">
-                    <span className="red">*</span> Verification Code
+                    <span className="red">*</span> Enter Verification Code
                   </label>
                   <input
                     type="text"
                     className="form-control"
                     id="vcode"
+                    maxLength={5}
                     autoComplete="off"
                     aria-describedby="vcodeHelp"
                     value={verificationCode}
