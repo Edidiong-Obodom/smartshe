@@ -113,6 +113,7 @@ const TestRegister = () => {
           // Compares the name gotten from CAC and the name inputed by the client
           if (data.companyName.toUpperCase().slice(0, 4) === userName.toUpperCase().slice(0, 4)){
             setCAC(true);
+            setLoading(false);
             return setNewUserName(data.companyName);
           } else{
             setLoginError("The CAC name does not match the CAC registeration number, please check the name and number and try again.");
@@ -147,6 +148,7 @@ const TestRegister = () => {
           } else if (res.status === 200) {
             res.json();
             setDip(false);
+            setLoading(false);
             return setVerifyEmail(true);
           }
         })
@@ -178,6 +180,7 @@ const TestRegister = () => {
           } else if (res.status === 200) {
             res.json();
             setDip(false);
+            setLoading(false);
             return setEmailVerified(true);
           }
         })
