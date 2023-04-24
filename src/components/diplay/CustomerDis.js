@@ -123,7 +123,7 @@ const CustomerDis = () => {
   const getUser = useCallback(async () => {
     setIsAuthenticating(true);
     try {
-      await fetch(`${api}/customers`, {
+      await fetch(`${api}/auth/customers`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       })
