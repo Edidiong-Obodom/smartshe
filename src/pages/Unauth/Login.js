@@ -1,7 +1,7 @@
-import LoginController from "../../components/login/LoginController";
+import LoginView from "../../components/login/LoginController";
 
 const Login = () => {
-  return <LoginController />;
+  return <LoginView />;
 };
 
 export default Login;
