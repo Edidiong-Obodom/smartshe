@@ -11,7 +11,7 @@ const Footer = () => {
                 Contact Us
               </span>
               <span className="block paddTB left">
-                Contact us by giving us a call or using any of the social media handles below or send
+                Contact us by test giving us a call or using any of the social media handles below or send
                 us a mail at info@smartshe.com.ng{" "}
                 <span className="">
                   <i className="fa-solid fa-envelope"></i>
