@@ -1,9 +1,10 @@
-import { instant, invoice, logo } from "../images/images";
+import { instant, invoice } from "../../images/images";
 import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
-import Footer from "../components/layout/Footer/Footer.js";
+import Footer from "../../components/layout/Footer/Footer.js";
+import Nav from "../../components/layout/Nav/Nav";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -30,19 +31,11 @@ const Home = () => {
   const register = () => {
     return navigate("/signup");
   };
-  const refresh = () => {
-    return window.location.reload();
-  };
 
   return (
     <>
       <div>
-        <div className="fixedct-top bg-white bottomShadow">
-          <div className="centerMarg center stuff limiter" onClick={refresh}>
-            <img src={logo} alt="smartsheLogo" width="80px" />
-            <h3 className="brown inlineBlock">SmartSHE</h3>
-          </div>
-        </div>
+        <Nav/>
         <div className="background pushDownMain">
           <div className="flexer container">
             <div className="leftHandside">
@@ -65,7 +58,7 @@ const Home = () => {
                       onClick={register}
                       className="btn bold bg-brown btn-lg block mt-5 bottomShadow btnct btnct-white"
                     >
-                      Register Now
+                      Sign Up
                     </button>
                   </motion.div>
                 </div>
@@ -253,7 +246,7 @@ const Home = () => {
             </span>
             <div className="centerFlex pushDown-2 container">
               <div className="centerF">
-                <ul className="atGrab-1">
+                <ul className="atGrab-1 ul">
                   <li className="mb-4 left">
                     SMB sends invoice to customer with purchase{" "}
                   </li>

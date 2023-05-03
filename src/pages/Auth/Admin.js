@@ -1,4 +1,4 @@
-import CustomerDis from "../components/diplay/CustomerDis"
+import CustomerDis from "../../components/diplay/CustomerDis"
 
 const Admin = () => {
     return (

@@ -34,7 +34,7 @@ code {
   margin-top: 5rem;
 }
 .pushDown {
-  margin-top: 6rem;
+  margin-top: 8rem;
 }
 .pushDown-1 {
   margin-top: 1.5rem;
@@ -104,6 +104,15 @@ code {
 }
 .bg-brown {
   background-color: #ff914d;
+}
+.gray {
+  color: #999999;
+}
+.grayHover:hover{
+  color: #999999;
+}
+.bg-gray {
+  background-color: #f9f9f9;
 }
 .underline {
   /* text-decoration: underline 5px;
@@ -201,6 +210,18 @@ code {
 .atGrabMassive {
   font-size: 6.3rem;
 }
+.atGrabNormal-1{
+ font-size: 1.9rem;
+}
+.atGrabNormal{
+ font-size: 1.7rem;
+}
+.atGrabLight {
+  font-size: 1.3rem;
+}
+.atGrabSoft{
+  font-size: 1.2rem;
+}
 .atGrab {
   font-size: 1.3rem;
   font-weight: 600;
@@ -228,14 +249,11 @@ code {
 .pitch {
   text-align: center;
 }
-.gray {
-  color: #999999;
-}
-.bg-gray {
-  background-color: #f9f9f9;
-}
 .bold {
   font-weight: 600;
+}
+.bolder {
+  font-weight: 700;
 }
 .hide {
   visibility: hidden;
@@ -267,12 +285,15 @@ code {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
+.noBorder{
+  border: none;
+}
 
-ul {
+.ul {
   list-style: none; /* Remove default bullets */
 }
 
-ul li::before {
+.ul li::before {
   content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
   color: #ff914d; /* Change the color */
   font-weight: bold; /* If you want it to be bold */

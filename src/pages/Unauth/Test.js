@@ -1,4 +1,4 @@
-import TestRegister from "../components/register/testRegister";
+import TestRegister from "../../components/register/testRegister";
 
 const Test = () => {
   return (
