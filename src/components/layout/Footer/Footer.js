@@ -57,7 +57,7 @@ const Footer = () => {
                 About Us
               </span>
               <span className="block paddTB">
-                Welcome to SmartSHE. An online Invoice Discounting 
+                SmartSHE is an online Invoice Discounting 
               Infrastructure for all African SMBs.
               SmartSHE is a B2B supply chain financing system that provides
               timely Invoice Discounting, Procurement Financing and working 
