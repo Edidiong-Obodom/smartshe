@@ -41,7 +41,7 @@ const Nav = () => {
               </motion.div>
             </span>
           </div>
-          <div className="collapse navbar-collapse" id="navbarNav">
+          <div className="collapse navbar-collapse container" id="navbarNav">
             <ul className="navbar-nav ms-auto ">
               <li className="nav-item">
                 <motion.div
