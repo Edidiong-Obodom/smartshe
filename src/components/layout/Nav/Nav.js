@@ -41,11 +41,11 @@ const Nav = () => {
               </motion.div>
             </span>
           </div>
-          <div className="collapse navbar-collapse container" id="navbarNav">
+          <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto ">
               <li className="nav-item">
                 <motion.div
-                  className="limiter centerMargpartial"
+                  className="container"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 1 }}
                 >
@@ -66,7 +66,7 @@ const Nav = () => {
               </li>
               <li className="nav-item">
                 <motion.div
-                  className="limiter centerMargpartial"
+                  className="container"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 1 }}
                 >
@@ -87,7 +87,7 @@ const Nav = () => {
               </li>
               <li className="nav-item">
                 <motion.div
-                  className="limiter centerMargpartial"
+                  className="container"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 1 }}
                 >
@@ -108,7 +108,7 @@ const Nav = () => {
               </li>
               <li className="nav-item">
                 <motion.div
-                  className="limiter centerMargpartial"
+                  className="container"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 1 }}
                 >
