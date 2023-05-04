@@ -51,13 +51,14 @@ const Nav = () => {
                 >
                   <NavLink
                     to="/"
-                    className="nav-link atGrabSoft"
+                    className="nav-link atGrabSoft underline1"
                     style={({ isActive }) =>
                       isActive
                         ? {
                             color: "rgb(177, 64, 23)",
+                            borderBottom: "2px solid #fd7e2b",
                           }
-                        : { color: "#363636" }
+                        : { color: "#363636", borderBottom: "none" }
                     }
                   >
                     Home
@@ -77,8 +78,9 @@ const Nav = () => {
                       isActive
                         ? {
                             color: "rgb(177, 64, 23)",
+                            borderBottom: "2px solid #fd7e2b",
                           }
-                        : { color: "#363636" }
+                        : { color: "#363636", borderBottom: "none" }
                     }
                   >
                     About us
@@ -98,8 +100,9 @@ const Nav = () => {
                       isActive
                         ? {
                             color: "rgb(177, 64, 23)",
+                            borderBottom: "2px solid #fd7e2b",
                           }
-                        : { color: "#363636" }
+                        : { color: "#363636", borderBottom: "none" }
                     }
                   >
                     Our Team
@@ -119,8 +122,9 @@ const Nav = () => {
                       isActive
                         ? {
                             color: "rgb(177, 64, 23)",
+                            borderBottom: "2px solid #fd7e2b",
                           }
-                        : { color: "#363636" }
+                        : { color: "#363636", borderBottom: "none" }
                     }
                   >
                     Login
