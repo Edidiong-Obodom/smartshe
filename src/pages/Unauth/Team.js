@@ -84,7 +84,7 @@ const OurTeam = () => {
                   Udemeobong Ojinnaga
                 </span>
                 <span className="block atGrabLight">
-                  Chief Executive Officer
+                  Chief Financial Officer
                 </span>
               </div>
             </div>
