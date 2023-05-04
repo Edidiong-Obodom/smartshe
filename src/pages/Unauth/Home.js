@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
-import Footer from "../../components/layout/Footer/Footer.js";
-import Nav from "../../components/layout/Nav/Nav";
+import Footer from "../../components/layout/Unauth/Footer/Footer";
+import Nav from "../../components/layout/Unauth/Nav/Nav";
 
 const Home = () => {
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import { logo } from "../../../images/images";
+import { logo } from "../../../../images/images";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";

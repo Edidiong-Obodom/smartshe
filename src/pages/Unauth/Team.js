@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import Footer from "../../components/layout/Footer/Footer";
-import Nav from "../../components/layout/Nav/Nav";
+import Footer from "../../components/layout/Unauth/Footer/Footer";
+import Nav from "../../components/layout/Unauth/Nav/Nav";
 import { ceo, cfo, coo, cto } from "../../images/images";
 import { motion } from "framer-motion";
 

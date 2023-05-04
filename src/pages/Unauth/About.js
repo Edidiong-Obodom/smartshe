@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import Footer from "../../components/layout/Footer/Footer";
-import Nav from "../../components/layout/Nav/Nav";
+import Footer from "../../components/layout/Unauth/Footer/Footer";
+import Nav from "../../components/layout/Unauth/Nav/Nav";
 import { ceo } from "../../images/images";
 
 const About = () => {

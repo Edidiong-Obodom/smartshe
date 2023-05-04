@@ -48,28 +48,26 @@ const LoginView = () => {
           password,
         }),
       })
-        .then((res) => {
+        .then(async(res) => {
+          const jsonData = await res.json();
           if (res.status === 401) {
             setDip("block");
             setLoading(false);
-            return setLoginError("Incorrect email...");
-          } else if (res.status === 403) {
-            setDip("block");
-            setLoading(false);
-            return setLoginError("Incorrect password...");
+            return setLoginError(`${jsonData}`);
           } else if (res.status === 411) {
             setDip("block");
             setLoading(false);
             return setLoginError("Something went wrong...");
           } else {
             setLoading(false);
-            return res.json();
+            sessionStorage.setItem("token", "Bearer " + jsonData.token);
+            return navigate("/user/dashboard");
           }
         })
-        .then(function (data) {
-          sessionStorage.setItem("token", "Bearer " + data.token);
-          return navigate("/dashboard");
-        });
+        // .then(function (data) {
+        //   sessionStorage.setItem("token", "Bearer " + data.token);
+        //   return navigate("/dashboard");
+        // });
     } catch (error) {
       console.error(error);
     }
