@@ -56,7 +56,7 @@ const Home = () => {
                   >
                     <button
                       onClick={register}
-                      className="btn bold bg-brown btn-lg block mt-5 bottomShadow btnct btnct-white"
+                      className="btn bold bg-browni btn-lg block mt-5 bottomShadow btnct btnct-white"
                     >
                       Sign Up
                     </button>
