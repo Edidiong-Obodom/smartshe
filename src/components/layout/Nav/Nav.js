@@ -55,7 +55,7 @@ const Nav = () => {
                     style={({ isActive }) =>
                       isActive
                         ? {
-                            color: "rgb(177, 64, 23)",
+                            color: "#fd7e2b",
                             borderBottom: "2px solid #fd7e2b",
                           }
                         : { color: "#363636", borderBottom: "none" }
@@ -77,7 +77,7 @@ const Nav = () => {
                     style={({ isActive }) =>
                       isActive
                         ? {
-                            color: "rgb(177, 64, 23)",
+                            color: "#fd7e2b",
                             borderBottom: "2px solid #fd7e2b",
                           }
                         : { color: "#363636", borderBottom: "none" }
@@ -99,7 +99,7 @@ const Nav = () => {
                     style={({ isActive }) =>
                       isActive
                         ? {
-                            color: "rgb(177, 64, 23)",
+                            color: "#fd7e2b",
                             borderBottom: "2px solid #fd7e2b",
                           }
                         : { color: "#363636", borderBottom: "none" }
@@ -121,7 +121,7 @@ const Nav = () => {
                     style={({ isActive }) =>
                       isActive
                         ? {
-                            color: "rgb(177, 64, 23)",
+                            color: "#fd7e2b",
                             borderBottom: "2px solid #fd7e2b",
                           }
                         : { color: "#363636", borderBottom: "none" }
