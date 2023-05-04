@@ -197,7 +197,7 @@ const Home = () => {
                     timely working capital solution to all marginalized
                     businesses in Africa. The idea is to ensure these businesses
                     have an easy access to powering their profitable businesses
-                    using SmartSHE platform
+                    using SmartSHE platform.
                   </span>
                 </div>
               </div>

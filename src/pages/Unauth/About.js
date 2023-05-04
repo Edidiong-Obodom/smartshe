@@ -30,7 +30,7 @@ const About = () => {
               provides timely Invoice Discounting, Procurement Financing and
               working capital financing for all marginalized African SMBs. The
               idea is to ensure these businesses have an easy access to powering
-              their profitable businesses using SmartSHE platform
+              their profitable businesses using SmartSHE platform.
             </span>
           </div>
           <div className="container mb-3">

@@ -40,7 +40,7 @@ const LoginView = () => {
     try {
       setLoading(true);
       //api call for sending the user data to the backend
-      await fetch(`${api}/login`, {
+      await fetch(`${api}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
