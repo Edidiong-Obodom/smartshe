@@ -1,6 +1,6 @@
 // Integrating....
 import classes from "../register/RegisterView.module.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { logo } from "../../images/images";
 import { api } from "../../link/API";
@@ -43,9 +43,22 @@ const RegisterView = () => {
     pass.current.type = show ? "password" : "text";
   };
 
+  useEffect(() => {
+    if (localStorage.getItem("verification_code") === "Sent") {
+      setCAC(true);
+      setVerifyEmail(true);
+      setLoginError(
+        "If you don't see the verification code in your inbox, check your spam folder."
+      );
+      setDip(true);
+    }
+  }, []);
   // Handles the total form submission
   const onSubmitForm = async (e) => {
     e.preventDefault();
+    const lEmail = localStorage.getItem("email");
+    const lName = localStorage.getItem("name");
+    const lReg = localStorage.getItem("reg");
     try {
       setLoading(true);
       //api call for sending the user data to the backend
@@ -53,13 +66,13 @@ const RegisterView = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email,
+          lEmail,
           password,
-          newUserName,
+          lName,
           userPhone,
-          userReg,
+          lReg,
         }),
-      }).then(async(res) => {
+      }).then(async (res) => {
         const jsonData = await res.json();
         if (res.status === 409) {
           setDip(true);
@@ -70,7 +83,7 @@ const RegisterView = () => {
           setLoading(false);
           return setLoginError("Something went wrong...");
         } else {
-          setLoading(false);
+          localStorage.clear();
           setSuccess(true);
           return res.json();
         }
@@ -82,6 +95,7 @@ const RegisterView = () => {
 
   // takes user back to homepage
   const handlePostBack = () => {
+    localStorage.clear();
     return navigate("/");
   };
 
@@ -141,7 +155,7 @@ const RegisterView = () => {
           email,
           newUserName,
         }),
-      }).then(async(res) => {
+      }).then(async (res) => {
         const jsonData = await res.json();
         if (res.status === 418) {
           setLoading(false);
@@ -152,6 +166,10 @@ const RegisterView = () => {
           setLoginError(`${jsonData}`);
           return setDip(true);
         } else if (res.status === 200) {
+          localStorage.setItem("verification_code", "Sent");
+          localStorage.setItem("email", email);
+          localStorage.setItem("name", newUserName);
+          localStorage.setItem("reg", userReg);
           setLoginError(
             "If you don't see the verification code in your inbox, check your spam folder."
           );
@@ -175,7 +193,7 @@ const RegisterView = () => {
         body: JSON.stringify({
           verificationCode,
         }),
-      }).then(async(res) => {
+      }).then(async (res) => {
         const jsonData = await res.json();
         if (res.status === 418) {
           setLoading(false);

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import moment from "moment";
+import { BeatLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import { logo } from "../../images/images";
 import { api } from "../../link/API";
@@ -175,8 +176,11 @@ const CustomerDis = () => {
   if (isAuthenticating) {
     // Result when user is still being authenticated
     return (
-      <div className="center centerFlex1">
-        <div style={{ display: "inline-block" }} className="loaderBig"></div>
+      // <div className="center centerFlex1">
+      //   <div style={{ display: "inline-block" }} className="loaderBig"></div>
+      // </div>
+      <div className="centerFlex1">
+        <BeatLoader color="#fd7e2b" loading={isAuthenticating} size={"40"} />
       </div>
     );
   }

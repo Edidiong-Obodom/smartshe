@@ -1,47 +1,110 @@
 import { useNavigate } from "react-router-dom";
+import { useState, useCallback, useEffect } from "react";
+import { BeatLoader } from "react-spinners";
 import AuthNavUser from "../../components/layout/Auth/authNav";
+import { api } from "../../link/API";
 
 const DashBoard = () => {
   const navigate = useNavigate();
+  const [isAuthenticating, setIsAuthenticating] = useState(true);
+  const [name, setName] = useState("");
+
+  const getUser = useCallback(async () => {
+    try {
+      await fetch(`${api}/user`, {
+        method: "GET",
+        headers: { authorization: sessionStorage.getItem("token") },
+      })
+        .then((res) => {
+          if (res.status !== 200) {
+            return navigate("/login");
+          } else {
+            return res.json();
+          }
+        })
+        .then(function (jsonData) {
+          setIsAuthenticating(false);
+          setName(jsonData.userName);
+        });
+    } catch (err) {
+      console.error(err.message);
+    }
+  }, [navigate]);
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    getUser();
+  }, [getUser]);
 
   // takes user back to homepage
   const handlePostBack = () => {
     return navigate("/");
   };
 
-  return (
-    <>
-      <div className="flexi">
-        <AuthNavUser />
-        <div className="flexiR">
-          <div className="pushDown-3">
-            <h1 className="center">
-              Still in Development Please Come Back Later
-            </h1>
-            <div className="mt-3 container center brown stuff" onClick={handlePostBack}>
+  if (isAuthenticating) {
+    return (
+      <>
+        <div className="centerFlex1">
+          <BeatLoader color="#fd7e2b" loading={isAuthenticating} size={"40"} />
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div className="flexi">
+          <AuthNavUser />
+          <div className="flexiR">
+            <div className="mt-4">
+              <h2 className="center">Welcome! {name}</h2>
+              <h5 className="center container">
+                {" "}
+                You are logged in. Our user dashboard is still in
+                development please come back later.
+              </h5>
+              <div
+                className="mt-3 container center brown stuff"
+                onClick={handlePostBack}
+              >
+                <h5>
+                  <i className="fa-solid fa-arrow-left"></i> Home
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="smallNav">
+          <AuthNavUser />
+          <div className="pushDown container">
+            <h2 className="center mb-2">Welcome! {name}</h2>
+            <h5 className="center">
+              {" "}
+              You are logged in. Our user dashboard is still in
+              development please come back later.
+            </h5>
+
+            <div
+              className="mt-3 container center brown stuff"
+              onClick={handlePostBack}
+            >
               <h5>
                 <i className="fa-solid fa-arrow-left"></i> Home
               </h5>
             </div>
           </div>
         </div>
-      </div>
-      <div className="smallNav">
-        <AuthNavUser />
-        <div className="pushDown container">
-          <h1 className="center">
-            Still in Development Please Come Back Later
-          </h1>
+      </>
+    );
 
-          <div className="mt-3 container center brown stuff" onClick={handlePostBack}>
-            <h5>
-              <i className="fa-solid fa-arrow-left"></i> Home
-            </h5>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+    // return (
+    //   <div className="centerFlex1">
+    //     <BeatLoader
+    //       color="#fd7e2b"
+    //       loading={true}
+    //       size={"40"}
+    //     />
+    //   </div>
+    // );
+  }
 };
 
 export default DashBoard;
