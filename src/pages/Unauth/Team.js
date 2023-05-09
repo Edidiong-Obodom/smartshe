@@ -67,7 +67,7 @@ const OurTeam = () => {
                 </span>
               </div>
             </div>
-            <div id="cfo">
+            <div id="cco">
               <div
                 style={{
                   backgroundImage: `url(${cfo})`,
@@ -84,7 +84,7 @@ const OurTeam = () => {
                   Udemeobong Ojinnaga
                 </span>
                 <span className="block atGrabLight">
-                  Chief Executive Officer
+                  Chief Commercial Officer
                 </span>
               </div>
             </div>
