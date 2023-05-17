@@ -14,6 +14,7 @@ const RegisterView = () => {
   const [userName, setUserName] = useState("");
   const [newUserName, setNewUserName] = useState("");
   const [userReg, setUserReg] = useState("");
+  const [userAddress, setUserAddress] = useState("");
   // handle loading on submit
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -59,6 +60,7 @@ const RegisterView = () => {
     const lEmail = localStorage.getItem("email");
     const lName = localStorage.getItem("name");
     const lReg = localStorage.getItem("reg");
+    const lAddress = localStorage.getItem("address");
     try {
       setLoading(true);
       //api call for sending the user data to the backend
@@ -71,6 +73,7 @@ const RegisterView = () => {
           lName,
           userPhone,
           lReg,
+          lAddress,
         }),
       }).then(async (res) => {
         const jsonData = await res.json();
@@ -130,6 +133,7 @@ const RegisterView = () => {
             userName.toUpperCase().slice(0, 4)
           ) {
             setCAC(true);
+            setUserAddress(data.companyAddress);
             return setNewUserName(data.companyName);
           } else {
             setDip(true);
@@ -170,6 +174,7 @@ const RegisterView = () => {
           localStorage.setItem("email", email);
           localStorage.setItem("name", newUserName);
           localStorage.setItem("reg", userReg);
+          localStorage.setItem("address", userAddress);
           setLoginError(
             "If you don't see the verification code in your inbox, check your spam folder."
           );

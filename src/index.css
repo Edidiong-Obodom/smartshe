@@ -36,6 +36,9 @@ code {
 .pushDown {
   margin-top: 8rem;
 }
+.pushDown-dashboard {
+  margin-top: 8rem;
+}
 .pushDown-1 {
   margin-top: 1.5rem;
 }
@@ -295,6 +298,13 @@ code {
   /* width: min(95%, 70rem); */
   /* margin-inline: auto; */
 }
+.dashIconGrid{
+  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  padding-block: 2rem;
+  width: min(95%, 70rem);
+}
 .solItem {
   padding-bottom: 1rem;
 }
@@ -369,7 +379,24 @@ code {
 .flexiL{
   display: none;
 }
-
+.addIconB{
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 75px;
+  padding-bottom: 75px;
+  border-top-right-radius: 24px;
+  border-top-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  border-bottom-left-radius: 24px;
+}
+.flexReal{
+  display: flex;
+  flex-direction: row;
+  height: 400px;
+}
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -450,5 +477,15 @@ code {
   }
   .smallNav{
     display: none;
+  }
+  .pushDown-dashboard{
+    margin-top: 1.5rem;
+  }
+  .dashIconGrid{
+    gap: 4rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-block: 2rem;
+    width: min(95%, 50rem);
   }
 }

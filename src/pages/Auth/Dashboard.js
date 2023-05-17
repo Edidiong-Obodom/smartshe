@@ -3,6 +3,7 @@ import { useState, useCallback, useEffect } from "react";
 import { BeatLoader } from "react-spinners";
 import AuthNavUser from "../../components/layout/Auth/authNav";
 import { api } from "../../link/API";
+import AddBoxIcon from "@mui/icons-material/AddBox";
 
 const DashBoard = () => {
   const navigate = useNavigate();
@@ -40,6 +41,41 @@ const DashBoard = () => {
     return navigate("/");
   };
 
+  const dashBody = () => {
+    return (
+      <div className="pushDown-dashboard container">
+        <h2 className="center">Welcome! {name}</h2>
+        <h5 className="center">
+          {" "}
+          You are logged in. Our user dashboard is still in development please
+          come back later.
+        </h5>
+
+        <div className="container center brown stuff" onClick={handlePostBack}>
+          <h5>
+            <i className="fa-solid fa-arrow-left"></i> Home
+          </h5>
+        </div>
+
+        <div className="dashIconGrid container">
+          <div className="addIconB">
+            <AddBoxIcon
+              className="brown"
+              sx={{ fontSize: "72px"}}
+            />
+            <h2 className="block brown">Add Invoice</h2>
+          </div>
+          <div className="addIconB">
+            <AddBoxIcon
+              className="brown"
+              sx={{ fontSize: "72px"}}
+            />
+            <h2 className="block brown">Add Invoice</h2></div>
+        </div>
+      </div>
+    );
+  };
+
   if (isAuthenticating) {
     return (
       <>
@@ -53,44 +89,11 @@ const DashBoard = () => {
       <>
         <div className="flexi">
           <AuthNavUser />
-          <div className="flexiR">
-            <div className="mt-4">
-              <h2 className="center">Welcome! {name}</h2>
-              <h5 className="center container">
-                {" "}
-                You are logged in. Our user dashboard is still in
-                development please come back later.
-              </h5>
-              <div
-                className="mt-3 container center brown stuff"
-                onClick={handlePostBack}
-              >
-                <h5>
-                  <i className="fa-solid fa-arrow-left"></i> Home
-                </h5>
-              </div>
-            </div>
-          </div>
+          <div className="flexiR">{dashBody()}</div>
         </div>
         <div className="smallNav">
           <AuthNavUser />
-          <div className="pushDown container">
-            <h2 className="center mb-2">Welcome! {name}</h2>
-            <h5 className="center">
-              {" "}
-              You are logged in. Our user dashboard is still in
-              development please come back later.
-            </h5>
-
-            <div
-              className="mt-3 container center brown stuff"
-              onClick={handlePostBack}
-            >
-              <h5>
-                <i className="fa-solid fa-arrow-left"></i> Home
-              </h5>
-            </div>
-          </div>
+          {dashBody()}
         </div>
       </>
     );
