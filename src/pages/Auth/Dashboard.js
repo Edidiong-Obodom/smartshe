@@ -4,6 +4,7 @@ import { BeatLoader } from "react-spinners";
 import AuthNavUser from "../../components/layout/Auth/authNav";
 import { api } from "../../link/API";
 import AddBoxIcon from "@mui/icons-material/AddBox";
+import { motion } from "framer-motion";
 
 const DashBoard = () => {
   const navigate = useNavigate();
@@ -58,19 +59,24 @@ const DashBoard = () => {
         </div>
 
         <div className="dashIconGrid container">
-          <div className="addIconB">
-            <AddBoxIcon
-              className="brown"
-              sx={{ fontSize: "72px"}}
-            />
+          <div className="addIconB stuff sha">
+            <motion.div
+              whileInView={{ rotate: 360 }}
+              transition={{ from: 0, duration: 2 }}
+            >
+              <AddBoxIcon className="brown" sx={{ fontSize: "72px" }} />
+            </motion.div>
             <h2 className="block brown">Add Invoice</h2>
           </div>
-          <div className="addIconB">
-            <AddBoxIcon
-              className="brown"
-              sx={{ fontSize: "72px"}}
-            />
-            <h2 className="block brown">Add Invoice</h2></div>
+          <div className="addIconB stuff sha">
+            <motion.div
+              whileInView={{ rotate: 360 }}
+              transition={{ from: 0, duration: 2 }}
+            >
+              <AddBoxIcon className="brown" sx={{ fontSize: "72px" }} />
+            </motion.div>
+            <h2 className="block brown">Add Invoice</h2>
+          </div>
         </div>
       </div>
     );
