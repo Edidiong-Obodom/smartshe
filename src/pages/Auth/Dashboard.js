@@ -58,7 +58,7 @@ const DashBoard = () => {
           </h5>
         </div>
 
-        <div className="dashIconGrid container">
+        <div className="dashIconGrid mt-4 container">
           <div className="addIconB stuff sha">
             <motion.div
               whileInView={{ rotate: 360 }}
@@ -68,7 +68,7 @@ const DashBoard = () => {
             </motion.div>
             <h2 className="block brown">Add Invoice</h2>
           </div>
-          <div className="addIconB stuff sha">
+          {/* <div className="addIconB stuff sha">
             <motion.div
               whileInView={{ rotate: 360 }}
               transition={{ from: 0, duration: 2 }}
@@ -76,7 +76,7 @@ const DashBoard = () => {
               <AddBoxIcon className="brown" sx={{ fontSize: "72px" }} />
             </motion.div>
             <h2 className="block brown">Add Invoice</h2>
-          </div>
+          </div> */}
         </div>
       </div>
     );

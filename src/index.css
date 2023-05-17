@@ -306,7 +306,7 @@ code {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   padding-block: 2rem;
-  width: min(95%, 70rem);
+  width: min(95%, 25rem);
 }
 .solItem {
   padding-bottom: 1rem;
@@ -484,11 +484,11 @@ code {
   .pushDown-dashboard{
     margin-top: 1.5rem;
   }
-  .dashIconGrid{
+  /* .dashIconGrid{
     gap: 4rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding-block: 2rem;
     width: min(95%, 50rem);
-  }
+  } */
 }
