@@ -69,14 +69,7 @@ const OurTeam = () => {
             </div>
             <div id="cco">
               <div
-                style={{
-                  backgroundImage: `url(${cfo})`,
-                  backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                  width: "100%",
-                  height: "350px",
-                }}
+                
               ></div>
 
               <div>
