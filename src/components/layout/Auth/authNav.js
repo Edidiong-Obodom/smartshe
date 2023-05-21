@@ -185,6 +185,22 @@ const AuthNavUser = () => {
               </li>
               <li className="nav-item">
                 <NavLink
+                  to="/user/settings"
+                  className="nav-link atGrabSoft"
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          color: "#fff",
+                          borderBottom: "2px solid #fff",
+                        }
+                      : { color: "#363636", borderBottom: "none" }
+                  }
+                >
+                  <SettingsIcon /> Settings
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
                   to="/user/support"
                   className="nav-link atGrabSoft"
                   style={({ isActive }) =>
