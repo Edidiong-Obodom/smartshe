@@ -144,7 +144,7 @@ code {
   text-decoration-color: #ff914d; */
   border-bottom: 1px solid #5c5e64;
 }
-.inline{
+.inline {
   display: inline;
 }
 .inlineBlock {
@@ -206,7 +206,7 @@ code {
 .btnct-brown:hover {
   border: 1px solid;
   border-color: #fd7e2b;
-  color: #fd7e2b;
+  background-color: #fd7e2b;
 }
 .bottomShadow {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
@@ -428,21 +428,21 @@ code {
   /* justify-content: center; */
   align-items: center;
 }
-.FlexRow{
+.FlexRow {
   display: flex;
   flex-direction: row;
   height: fit-content;
 }
-.FlexCol{
+.FlexCol {
   display: flex;
   flex-direction: column;
 }
-.flex{
+.flex {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
-.bigNav{
+.bigNav {
   display: none;
 }
 @keyframes spin {
@@ -460,17 +460,23 @@ code {
   background-color: white;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
-.profileDetailsSmall{
+.profileDetailsSmall {
   display: block;
 }
-.profileDetailsBig{
+.profileDetailsBig {
   display: none;
 }
+.profileImage {
+  border-radius: 50%;
+  border: 4px solid #fd7e2b;
+  height: 100px;
+  width: 100px;
+}
 @media (min-width: 345px) {
-  .profileDetailsSmall{
+  .profileDetailsSmall {
     display: none;
   }
-  .profileDetailsBig{
+  .profileDetailsBig {
     display: block;
   }
 }
@@ -540,7 +546,7 @@ code {
   .smallNav {
     display: none;
   }
-  .bigNav{
+  .bigNav {
     display: block;
   }
   .pushDown-dashboard {
@@ -556,5 +562,12 @@ code {
 
   .profileText {
     font-size: 1.5rem;
+  }
+
+  .profileImage {
+    border-radius: 50%;
+    border: 4px solid #fd7e2b;
+    height: 70px;
+    width: 70px;
   }
 }
