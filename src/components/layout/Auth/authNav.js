@@ -3,6 +3,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import HistoryIcon from "@mui/icons-material/History";
 import HelpIcon from "@mui/icons-material/Help";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { logo } from "../../../images/images";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
@@ -60,13 +61,7 @@ const AuthNavUser = () => {
                   : { color: "#fff", borderBottom: "none" }
               }
             >
-              <motion.div
-                className="limiter centerMargpartial"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 1.1 }}
-              >
-                <DashboardIcon /> DashBoard
-              </motion.div>
+              <DashboardIcon /> DashBoard
             </NavLink>
           </span>
           <span className="block atGrabSoft centerMarg white bold stuff grayHover mt-4">
@@ -82,32 +77,17 @@ const AuthNavUser = () => {
                   : { color: "#fff", borderBottom: "none" }
               }
             >
-              <motion.div
-                className="limiter centerMargpartial"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 1.1 }}
-              >
-                <AccountBoxIcon /> Profile
-              </motion.div>
+              <AccountBoxIcon /> Profile
             </NavLink>
           </span>
           <span className="block atGrabSoft centerMarg white bold stuff grayHover mt-4">
-            <motion.div
-              className="limiter centerMargpartial"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 1.1 }}
-            >
-              <HistoryIcon /> History
-            </motion.div>
+            <HistoryIcon /> History
           </span>
           <span className="block atGrabSoft centerMarg white bold stuff grayHover mt-4">
-            <motion.div
-              className="limiter centerMargpartial"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 1.1 }}
-            >
-              <HelpIcon /> Support
-            </motion.div>
+            <SettingsIcon /> Settings
+          </span>
+          <span className="block atGrabSoft centerMarg white bold stuff grayHover mt-4">
+            <HelpIcon /> Support
           </span>
         </div>
         <div
