@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Footer from "../../components/layout/Unauth/Footer/Footer";
 import Nav from "../../components/layout/Unauth/Nav/Nav";
-import { ceo } from "../../images/images";
+import { boss } from "../../images/images";
 
 const About = () => {
   const navigate = useNavigate();
@@ -49,7 +49,7 @@ const About = () => {
           <div className="ourserGrid container mb-3">
             <div
               style={{
-                backgroundImage: `url(${ceo})`,
+                backgroundImage: `url(${boss})`,
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",

@@ -4,17 +4,38 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import HistoryIcon from "@mui/icons-material/History";
 import HelpIcon from "@mui/icons-material/Help";
 import { logo } from "../../../images/images";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../store/reducers/userReducer";
 
 const AuthNavUser = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [toggle, setToggle] = useState(false);
   const toggler = () => {
     return toggle ? setToggle(false) : setToggle(true);
   };
   const refresh = () => {
     return window.location.reload();
+  };
+  const logOut = () => {
+    sessionStorage.clear();
+    dispatch(
+      logout({
+        name: "",
+        email: "",
+        reg: "",
+        logo: "",
+        address: "",
+        status: "",
+        loggedIn: false,
+        isAuthenticating: false,
+      })
+    );
+    return navigate(location.pathname);
   };
   return (
     <>
@@ -27,20 +48,79 @@ const AuthNavUser = () => {
         </div>
         <div className="centerMarg mt-3">
           <span className="block atGrabSoft centerMarg white bold stuff grayHover mt-4">
-            <DashboardIcon /> DashBoard
+            <NavLink
+              to="/user/dashboard"
+              className="nav-link atGrabSoft underline1"
+              style={({ isActive }) =>
+                isActive
+                  ? {
+                      color: "#363636",
+                      borderBottom: "2px solid #363636",
+                    }
+                  : { color: "#fff", borderBottom: "none" }
+              }
+            >
+              <motion.div
+                className="limiter centerMargpartial"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 1.1 }}
+              >
+                <DashboardIcon /> DashBoard
+              </motion.div>
+            </NavLink>
           </span>
           <span className="block atGrabSoft centerMarg white bold stuff grayHover mt-4">
-            <AccountBoxIcon /> Profile
+            <NavLink
+              to="/user/profile"
+              className="nav-link atGrabSoft underline1"
+              style={({ isActive }) =>
+                isActive
+                  ? {
+                      color: "#363636",
+                      borderBottom: "2px solid #363636",
+                    }
+                  : { color: "#fff", borderBottom: "none" }
+              }
+            >
+              <motion.div
+                className="limiter centerMargpartial"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 1.1 }}
+              >
+                <AccountBoxIcon /> Profile
+              </motion.div>
+            </NavLink>
           </span>
           <span className="block atGrabSoft centerMarg white bold stuff grayHover mt-4">
-            <HistoryIcon /> History
+            <motion.div
+              className="limiter centerMargpartial"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 1.1 }}
+            >
+              <HistoryIcon /> History
+            </motion.div>
           </span>
           <span className="block atGrabSoft centerMarg white bold stuff grayHover mt-4">
-            <HelpIcon /> Support
+            <motion.div
+              className="limiter centerMargpartial"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 1.1 }}
+            >
+              <HelpIcon /> Support
+            </motion.div>
           </span>
         </div>
-        <div className="pb-5 atGrabSoft center white bold stuff grayHover flexiLBaby">
-          <i className="fa-solid fa-right-from-bracket"></i> &nbsp; Logout
+        <div
+          onClick={logOut}
+          className="pb-5 atGrabSoft center white bold stuff grayHover flexiLBaby"
+        >
+          <motion.div
+            className="limiter centerMargpartial"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 1.1 }}
+          >
+            <i className="fa-solid fa-right-from-bracket"></i> &nbsp; Logout
+          </motion.div>
         </div>
       </div>
 
@@ -76,92 +156,87 @@ const AuthNavUser = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto ">
               <li className="nav-item">
-                <motion.div
-                  className=""
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 1 }}
+                <NavLink
+                  to="/user/dashboard"
+                  className="nav-link atGrabSoft underline1"
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          color: "#fff",
+                          borderBottom: "2px solid #fff",
+                        }
+                      : { color: "#363636", borderBottom: "none" }
+                  }
                 >
-                  <NavLink
-                    to="/user/dashboard"
-                    className="nav-link atGrabSoft underline1"
-                    style={({ isActive }) =>
-                      isActive
-                        ? {
-                            color: "#fff",
-                            borderBottom: "2px solid #fff",
-                          }
-                        : { color: "#363636", borderBottom: "none" }
-                    }
-                  >
-                   <DashboardIcon /> DashBoard
-                  </NavLink>
-                </motion.div>
+                  <DashboardIcon /> DashBoard
+                </NavLink>
               </li>
               <li className="nav-item">
-                <motion.div
-                  className=""
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 1 }}
+                <NavLink
+                  to="/user/profile"
+                  className="nav-link atGrabSoft"
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          color: "#fff",
+                          borderBottom: "2px solid #fff",
+                        }
+                      : { color: "#363636", borderBottom: "none" }
+                  }
                 >
-                  <NavLink
-                    to="/user/profile"
-                    className="nav-link atGrabSoft"
-                    style={({ isActive }) =>
-                      isActive
-                        ? {
-                            color: "#fff",
-                            borderBottom: "2px solid #fff",
-                          }
-                        : { color: "#363636", borderBottom: "none" }
-                    }
-                  >
-                    <AccountBoxIcon /> Profile
-                  </NavLink>
-                </motion.div>
+                  <AccountBoxIcon /> Profile
+                </NavLink>
               </li>
               <li className="nav-item">
-                <motion.div
-                  className=""
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 1 }}
+                <NavLink
+                  to="/user/history"
+                  className="nav-link atGrabSoft"
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          color: "#fff",
+                          borderBottom: "2px solid #fff",
+                        }
+                      : { color: "#363636", borderBottom: "none" }
+                  }
                 >
-                  <NavLink
-                    to="/user/history"
-                    className="nav-link atGrabSoft"
-                    style={({ isActive }) =>
-                      isActive
-                        ? {
-                            color: "#fff",
-                            borderBottom: "2px solid #fff",
-                          }
-                        : { color: "#363636", borderBottom: "none" }
-                    }
-                  >
-                    <HistoryIcon /> History
-                  </NavLink>
-                </motion.div>
+                  <HistoryIcon /> History
+                </NavLink>
               </li>
               <li className="nav-item">
-                <motion.div
-                  className=""
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 1 }}
+                <NavLink
+                  to="/user/support"
+                  className="nav-link atGrabSoft"
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          color: "#fff",
+                          borderBottom: "2px solid #fff",
+                        }
+                      : { color: "#363636", borderBottom: "none" }
+                  }
                 >
-                  <NavLink
-                    to="/user/support"
-                    className="nav-link atGrabSoft"
-                    style={({ isActive }) =>
-                      isActive
-                        ? {
-                            color: "#fff",
-                            borderBottom: "2px solid #fff",
-                          }
-                        : { color: "#363636", borderBottom: "none" }
-                    }
-                  >
-                    <HelpIcon /> Support
-                  </NavLink>
-                </motion.div>
+                  <HelpIcon /> Support
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  onClick={logOut}
+                  className="nav-link atGrabSoft"
+                  // style={({ isActive }) =>
+                  //   isActive
+                  //     ? {
+                  //         color: "#fff",
+                  //         borderBottom: "2px solid #fff",
+                  //       }
+                  //     : { color: "#363636", borderBottom: "none" }
+                  // }
+                >
+                  <span className="white">
+                    <i className="fa-solid fa-right-from-bracket"></i> &nbsp;
+                    Logout
+                  </span>
+                </NavLink>
               </li>
             </ul>
           </div>

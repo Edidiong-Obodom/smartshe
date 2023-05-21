@@ -1,5 +1,5 @@
 import { instant, invoice } from "../../images/images";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
@@ -8,6 +8,7 @@ import Nav from "../../components/layout/Unauth/Nav/Nav";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [text, addText] = useState("");
 
   const animation = useAnimation();
   const { ref, inView } = useInView({ threshold: 0.2 });
@@ -31,11 +32,10 @@ const Home = () => {
   const register = () => {
     return navigate("/signup");
   };
-
   return (
     <>
       <div>
-        <Nav/>
+        <Nav />
         <div className="background pushDownMain">
           <div className="flexer container">
             <div className="leftHandside">
@@ -189,7 +189,7 @@ const Home = () => {
                   }}
                 ></div>
                 <span className="block paddTB mb-2 centerMarg atGrab-1 underline">
-                  Procurement Order Financing
+                  MSME working capital loan
                 </span>
                 <div className="gray container left">
                   <span>

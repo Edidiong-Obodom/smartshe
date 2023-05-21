@@ -2,11 +2,16 @@ import classes from "../login/LoginController.module.css";
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { api } from "../../link/API";
 import { logo } from "../../images/images";
+import { useDispatch } from "react-redux";
+import { changeAll } from "../../store/reducers/userReducer";
+import { useLocation, useNavigate } from "react-router-dom";
+// import { changeName, selectUser } from "../../store/reducers/userReducer";
 
 const LoginView = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
   // values inputed in the form
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,27 +52,47 @@ const LoginView = () => {
           email,
           password,
         }),
-      })
-        .then(async(res) => {
-          const jsonData = await res.json();
-          if (res.status === 401) {
-            setDip("block");
-            setLoading(false);
-            return setLoginError(`${jsonData}`);
-          } else if (res.status === 411) {
-            setDip("block");
-            setLoading(false);
-            return setLoginError("Something went wrong...");
-          } else {
-            setLoading(false);
-            sessionStorage.setItem("token", "Bearer " + jsonData.token);
-            return navigate("/user/dashboard");
-          }
-        })
-        // .then(function (data) {
-        //   sessionStorage.setItem("token", "Bearer " + data.token);
-        //   return navigate("/dashboard");
-        // });
+      }).then(async (res) => {
+        const jsonData = await res.json();
+        if (res.status === 401) {
+          setDip("block");
+          setLoading(false);
+          return setLoginError(`${jsonData}`);
+        } else if (res.status === 411) {
+          setDip("block");
+          setLoading(false);
+          return setLoginError("Something went wrong...");
+        } else {
+          setLoading(false);
+          sessionStorage.setItem("name", jsonData.person.name);
+          sessionStorage.setItem("email", jsonData.person.email);
+          sessionStorage.setItem("reg", jsonData.person.reg);
+          sessionStorage.setItem("logo", jsonData.person.logo);
+          sessionStorage.setItem("address", jsonData.person.address);
+          sessionStorage.setItem("status", jsonData.person.status);
+          sessionStorage.setItem("loggedIn", JSON.stringify(true));
+          dispatch(
+            changeAll({
+              name: jsonData.person.name,
+              email: jsonData.person.email,
+              reg: jsonData.person.reg,
+              logo: jsonData.person.logo,
+              address: jsonData.person.address,
+              status: jsonData.person.status,
+              loggedIn: true,
+              isAuthenticating: false,
+            })
+          );
+          sessionStorage.setItem("token", "Bearer " + jsonData.token);
+          return location.pathname === "/login"
+            ? navigate("/user/dashboard")
+            : "";
+        }
+      });
+      // .then(function (data) {
+      //   sessionStorage.setItem("token", "Bearer " + data.token);
+      //   return navigate("/dashboard");
+      // });
     } catch (error) {
       console.error(error);
     }
