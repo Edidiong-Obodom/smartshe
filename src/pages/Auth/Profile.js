@@ -18,11 +18,40 @@ const Profile = () => {
   const reg = useSelector(selectUserReg);
   const add = useSelector(selectUserAddress);
   const address = () => {
-    return add === "null" || add == null ? "empty" : add;
+    return add === "null" || add == null ? "Empty" : add;
   };
   const log = useSelector(selectUserLogo);
   const logo = () => {
-    return log === "null" || log == null ? "empty" : log;
+    return log === "null" || log == null ? "Empty" : log;
+  };
+
+  const reducer = (text) => {
+    if (text.length <= 10) {
+      return text;
+    } else if (text.slice(9, 10) === " ") {
+      let short = text.slice(0, 9);
+      let completeShort = short + "...";
+
+      return completeShort;
+    } else {
+      let short = text.slice(0, 9);
+      let completeShort = short + "...";
+      return completeShort;
+    }
+  };
+  const reducerBig = (text) => {
+    if (text.length <= 26) {
+      return text;
+    } else if (text.slice(25, 26) === " ") {
+      let short = text.slice(0, 25);
+      let completeShort = short + "...";
+
+      return completeShort;
+    } else {
+      let short = text.slice(0, 25);
+      let completeShort = short + "...";
+      return completeShort;
+    }
   };
   const profile = () => {
     return (
@@ -37,24 +66,49 @@ const Profile = () => {
               <AccountCircleIcon className="brown" sx={{ fontSize: "72px" }} />
               <div className="btnct btnct-brown mt-2">Upload Logo</div>
             </div>
-            <span className="profileText bold block center mb-3">
-              Company Name: {name}
-            </span>
-            <span className="profileText bold block center mb-3">
-              Company Email: {email}
-            </span>
-            <span className="profileText bold block center mb-3">
-              Company CAC No: {reg}
-            </span>
-            <span className="profileText bold block center mb-3">
-              Company Status: {status}
-            </span>
-            <span className="profileText bold block center mb-3">
-              Company Address: {address()}
-            </span>
-            <span className="profileText bold block center mb-3">
-              Company Logo: {logo()}
-            </span>
+            <div className="centerFlexReal">
+              <div className="FlexRow mb-3">
+                <div className="FlexCol center container">
+                  <span className="profileText bold block">0</span>
+                  <span className="profileText gray block">Applied</span>
+                </div>
+                <div className="FlexCol center container">
+                  <span className="profileText bold">0</span>
+                  <span className="profileText gray">Approved</span>
+                </div>
+              </div>
+              <div className="mt-5">
+                <hr />
+                <div className="FlexRow">
+                  <div className="FlexCol rightFlexCol">
+                    <div className="profileText bold">Name:</div>
+                    <div className="profileText bold">Email:</div>
+                    <div className="profileText bold">CAC No:</div>
+                    <div className="profileText bold">Status:</div>
+                    <div className="profileText bold">Address:</div>
+                    <div className="profileText bold">Logo:</div>
+                  </div>
+                  <div className="FlexCol container profileDetailsBig">
+                    <div className="profileText bold">{reducerBig(name)}</div>
+                    <div className="profileText bold">{reducerBig(email)}</div>
+                    <div className="profileText bold">{reducerBig(reg)}</div>
+                    <div className="profileText bold">{status}</div>
+                    <div className="profileText bold">
+                      {reducerBig(address())}
+                    </div>
+                    <div className="profileText bold">{reducerBig(logo())}</div>
+                  </div>
+                  <div className="FlexCol container profileDetailsSmall">
+                    <div className="profileText bold">{reducer(name)}</div>
+                    <div className="profileText bold">{reducer(email)}</div>
+                    <div className="profileText bold">{reducer(reg)}</div>
+                    <div className="profileText bold">{status}</div>
+                    <div className="profileText bold">{reducer(address())}</div>
+                    <div className="profileText bold">{reducer(logo())}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </motion.div>
