@@ -165,6 +165,23 @@ const Profile = () => {
                   className="brown mb-2"
                   sx={{ fontSize: "72px" }}
                 />
+                <div onClick={handleClick} className="btnct btnct-brown mt-2">
+
+                {loading ? (
+
+                  <>
+
+                    <BeatLoader color="#fff" loading={loading} size={"12"} />
+
+                  </>
+
+                ) : (
+
+                  <>Upload Logo</>
+
+                )}
+
+              </div>
               ) : (
                 <div
                   style={{
@@ -175,16 +192,25 @@ const Profile = () => {
                   }}
                   className="profileImage mb-2"
                 ></div>
-              )}
-              <div onClick={handleClick} className="btnct btnct-brown mt-2">
+                <div onClick={handleClick} className="btnct btnct-brown mt-2">
+
                 {loading ? (
+
                   <>
+
                     <BeatLoader color="#fff" loading={loading} size={"12"} />
+
                   </>
+
                 ) : (
-                  <>Upload Logo</>
+
+                  <>Change Logo</>
+
                 )}
+
               </div>
+              )}
+              
               <input
                 type="file"
                 accept=".jpeg, .png, .jpg, .svg"
