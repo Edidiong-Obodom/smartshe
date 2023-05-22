@@ -161,6 +161,7 @@ const Profile = () => {
           <div className="">
             <div className="centerFlexReal mb-3">
               {logo === null || logo === "null" ? (
+               <>
                 <AccountCircleIcon
                   className="brown mb-2"
                   sx={{ fontSize: "72px" }}
@@ -182,7 +183,9 @@ const Profile = () => {
                 )}
 
               </div>
+               </>
               ) : (
+                <>
                 <div
                   style={{
                     backgroundImage: `url(${logo})`,
@@ -209,6 +212,7 @@ const Profile = () => {
                 )}
 
               </div>
+              </>
               )}
               
               <input
