@@ -161,60 +161,52 @@ const Profile = () => {
           <div className="">
             <div className="centerFlexReal mb-3">
               {logo === null || logo === "null" ? (
-               <>
-                <AccountCircleIcon
-                  className="brown mb-2"
-                  sx={{ fontSize: "72px" }}
-                />
-                <div onClick={handleClick} className="btnct btnct-brown mt-2">
-
-                {loading ? (
-
-                  <>
-
-                    <BeatLoader color="#fff" loading={loading} size={"12"} />
-
-                  </>
-
-                ) : (
-
-                  <>Upload Logo</>
-
-                )}
-
-              </div>
-               </>
+                <>
+                  <AccountCircleIcon
+                    className="brown mb-2"
+                    sx={{ fontSize: "72px" }}
+                  />
+                  <div onClick={handleClick} className="btnct btnct-brown mt-2">
+                    {loading ? (
+                      <>
+                        <BeatLoader
+                          color="#fff"
+                          loading={loading}
+                          size={"12"}
+                        />
+                      </>
+                    ) : (
+                      <>Upload Logo</>
+                    )}
+                  </div>
+                </>
               ) : (
                 <>
-                <div
-                  style={{
-                    backgroundImage: `url(${logo})`,
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                  }}
-                  className="profileImage mb-2"
-                ></div>
-                <div onClick={handleClick} className="btnct btnct-brown mt-2">
-
-                {loading ? (
-
-                  <>
-
-                    <BeatLoader color="#fff" loading={loading} size={"12"} />
-
-                  </>
-
-                ) : (
-
-                  <>Change Logo</>
-
-                )}
-
-              </div>
-              </>
+                  <div
+                    style={{
+                      backgroundImage: `url(${logo})`,
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "center",
+                    }}
+                    className="profileImage mb-2"
+                  ></div>
+                  <div onClick={handleClick} className="btnct btnct-brown mt-2">
+                    {loading ? (
+                      <>
+                        <BeatLoader
+                          color="#fff"
+                          loading={loading}
+                          size={"12"}
+                        />
+                      </>
+                    ) : (
+                      <>Change Logo</>
+                    )}
+                  </div>
+                </>
               )}
-              
+
               <input
                 type="file"
                 accept=".jpeg, .png, .jpg, .svg"
