@@ -12,6 +12,7 @@ import { changeIsAuth, selectUserLoggedIn } from "./store/reducers/userReducer";
 import { useCallback, useEffect } from "react";
 import { selectUserIsAuth } from "./store/reducers/userReducer";
 import { BeatLoader } from "react-spinners";
+import InvoiceApply from "./pages/Auth/DashboardInvoiceApply";
 // import Test from "./pages/Test";
 
 function App() {
@@ -60,6 +61,10 @@ function App() {
           <Route
             path="/user/dashboard"
             element={userIsLoggedIn ? <DashBoard /> : <Login />}
+          />
+          <Route
+            path="/user/dashboard/invoiceapply"
+            element={userIsLoggedIn ? <InvoiceApply /> : <Login />}
           />
           <Route
             path="/user/profile"

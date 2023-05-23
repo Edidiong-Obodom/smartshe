@@ -1,37 +1,15 @@
-import { useNavigate } from "react-router-dom";
-import { useState, useCallback, useEffect } from "react";
-import { BeatLoader } from "react-spinners";
 import AuthNavUser from "../../components/layout/Auth/authNav";
-import { api } from "../../link/API";
-// import AddBoxIcon from "@mui/icons-material/AddBox";
 import { motion } from "framer-motion";
 import { logout, selectUserName } from "../../store/reducers/userReducer";
 import { useSelector, useDispatch } from "react-redux";
 import CreditScoreIcon from "@mui/icons-material/CreditScore";
 import DescriptionIcon from "@mui/icons-material/Description";
+import { useNavigate } from "react-router-dom";
 
 const DashBoard = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  // const [isAuthenticating, setIsAuthenticating] = useState(true);
-  // const [name, setName] = useState("");
   const clientName = useSelector(selectUserName);
-
-  // const getUser = useCallback(async () => {
-  //   try {
-  //     const clientName = await selectUserName();
-  //     setName(clientName);
-  //     return clientName.length > 0
-  //       ? setIsAuthenticating(false)
-  //       : setIsAuthenticating(true);
-  //   } catch (err) {
-  //     console.error(err.message);
-  //   }
-  // }, [navigate]);
-  // useEffect(() => {
-  //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  //   getUser();
-  // }, [getUser]);
+  const navigate = useNavigate();
 
   // takes user back to homepage
   const handlePostBack = () => {
@@ -75,6 +53,17 @@ const DashBoard = () => {
           </div>
 
           <div className="dashIconGrid mt-4 container">
+            <div className="addIconB addIconBP stuff sha" onClick={() => {
+              navigate("invoiceapply");
+            }}>
+              <motion.div
+                whileInView={{ rotate: 360 }}
+                transition={{ from: 0, duration: 2 }}
+              >
+                <DescriptionIcon className="brown" sx={{ fontSize: "72px" }} />
+              </motion.div>
+              <h2 className="block brown">Invoice</h2>
+            </div>
             <div className="addIconB addIconBP stuff sha">
               <motion.div
                 whileInView={{ rotate: 360 }}
@@ -84,30 +73,12 @@ const DashBoard = () => {
               </motion.div>
               <h2 className="block brown">Loan</h2>
             </div>
-            <div className="addIconB addIconBP stuff sha">
-              <motion.div
-                whileInView={{ rotate: 360 }}
-                transition={{ from: 0, duration: 2 }}
-              >
-                <DescriptionIcon className="brown" sx={{ fontSize: "72px" }} />
-              </motion.div>
-              <h2 className="block brown">Invoice</h2>
-            </div>
           </div>
         </div>
       </motion.div>
     );
   };
 
-  // if (isAuthenticating) {
-  //   return (
-  //     <>
-  //       <div className="centerFlex1">
-  //         <BeatLoader color="#fd7e2b" loading={isAuthenticating} size={"40"} />
-  //       </div>
-  //     </>
-  //   );
-  // } else {
   return (
     <>
       <div className="flexi">
@@ -120,17 +91,6 @@ const DashBoard = () => {
       </div>
     </>
   );
-
-  // return (
-  //   <div className="centerFlex1">
-  //     <BeatLoader
-  //       color="#fd7e2b"
-  //       loading={true}
-  //       size={"40"}
-  //     />
-  //   </div>
-  // );
 };
-// };
 
 export default DashBoard;
