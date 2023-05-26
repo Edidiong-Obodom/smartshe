@@ -16,6 +16,7 @@ import { useRef, useState } from "react";
 import { api } from "../../link/API";
 import { BeatLoader } from "react-spinners";
 import axios from "axios";
+import Four0Four from "../../components/error/404error";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -263,14 +264,15 @@ const Profile = () => {
 
   return (
     <>
-      <div className="flexi">
+      {/* <div className="flexi">
         <AuthNavUser />
         <div className="flexiR">{profile()}</div>
       </div>
       <div className="smallNav">
         <AuthNavUser />
         {profile()}
-      </div>
+      </div> */}
+    <Four0Four />
     </>
   );
 };

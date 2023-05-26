@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CreditScoreIcon from "@mui/icons-material/CreditScore";
 import DescriptionIcon from "@mui/icons-material/Description";
 import { useNavigate } from "react-router-dom";
+import Four0Four from "../../components/error/404error";
 
 const DashBoard = () => {
   const dispatch = useDispatch();
@@ -81,14 +82,15 @@ const DashBoard = () => {
 
   return (
     <>
-      <div className="flexi">
+      {/* <div className="flexi">
         <AuthNavUser />
         <div className="flexiR">{dashBody()}</div>
       </div>
       <div className="smallNav">
         <AuthNavUser />
         {dashBody()}
-      </div>
+      </div> */}
+    <Four0Four />
     </>
   );
 };
