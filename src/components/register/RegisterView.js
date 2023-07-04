@@ -170,13 +170,14 @@ const RegisterView = () => {
           setLoginError(`${jsonData}`);
           return setDip(true);
         } else if (res.status === 200) {
+          setVerificationCode(jsonData.code);
           localStorage.setItem("verification_code", "Sent");
           localStorage.setItem("email", email);
           localStorage.setItem("name", newUserName);
           localStorage.setItem("reg", userReg);
           localStorage.setItem("address", userAddress);
           setLoginError(
-            "If you don't see the verification code in your inbox, check your spam folder."
+            "No verification code was sent to your email because the comany's email is currently redundant. Just click the button"
           );
           setDip(true);
           setLoading(false);
