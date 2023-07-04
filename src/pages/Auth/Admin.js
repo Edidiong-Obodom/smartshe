@@ -3,8 +3,8 @@ import Four0Four from "../../components/error/404error";
 
 const Admin = () => {
   return (
-    // <CustomerDis/>
-    <Four0Four />
+    <CustomerDis/>
+    // <Four0Four />
   );
 };
 
