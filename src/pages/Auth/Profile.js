@@ -264,15 +264,15 @@ const Profile = () => {
 
   return (
     <>
-      {/* <div className="flexi">
+      <div className="flexi">
         <AuthNavUser />
         <div className="flexiR">{profile()}</div>
       </div>
       <div className="smallNav">
         <AuthNavUser />
         {profile()}
-      </div> */}
-    <Four0Four />
+      </div>
+    {/* <Four0Four /> */}
     </>
   );
 };

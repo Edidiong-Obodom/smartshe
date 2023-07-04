@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Footer from "../../components/layout/Unauth/Footer/Footer";
 import Nav from "../../components/layout/Unauth/Nav/Nav";
-import { ceo, cfo, coo, cto } from "../../images/images";
+import { ceo, cfo, coo, cto, boss } from "../../images/images";
 import { motion } from "framer-motion";
 
 const OurTeam = () => {
@@ -30,7 +30,7 @@ const OurTeam = () => {
             <div id="ceo">
               <div
                 style={{
-                  backgroundImage: `url(${ceo})`,
+                  backgroundImage: `url(${boss})`,
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "center",

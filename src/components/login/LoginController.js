@@ -54,43 +54,41 @@ const LoginView = () => {
         }),
       }).then(async (res) => {
         const jsonData = await res.json();
-        if (res.status === 401 || res.status === 200) {
+        if (res.status === 401) {
           setDip("block");
           setLoading(false);
-          // return setLoginError(`${jsonData}`);
-          return setLoginError("Something went wrong...");
+          return setLoginError(`${jsonData}`);
         } else if (res.status === 411) {
           setDip("block");
           setLoading(false);
           return setLoginError("Something went wrong...");
+        } else {
+          setLoading(false);
+          sessionStorage.setItem("name", jsonData.person.name);
+          sessionStorage.setItem("email", jsonData.person.email);
+          sessionStorage.setItem("reg", jsonData.person.reg);
+          sessionStorage.setItem("logo", jsonData.person.logo);
+          sessionStorage.setItem("address", jsonData.person.address);
+          sessionStorage.setItem("status", jsonData.person.status);
+          sessionStorage.setItem("loggedIn", JSON.stringify(true));
+          dispatch(
+            changeAll({
+              name: jsonData.person.name,
+              email: jsonData.person.email,
+              reg: jsonData.person.reg,
+              logo: jsonData.person.logo,
+              address: jsonData.person.address,
+              status: jsonData.person.status,
+              loggedIn: true,
+              isAuthenticating: false,
+            })
+          );
+          sessionStorage.setItem("token", "Bearer " + jsonData.token);
+          return location.pathname === "/login"
+            ? navigate("/user/dashboard")
+            : "";
         }
-        // } else {
-        //   setLoading(false);
-        //   sessionStorage.setItem("name", jsonData.person.name);
-        //   sessionStorage.setItem("email", jsonData.person.email);
-        //   sessionStorage.setItem("reg", jsonData.person.reg);
-        //   sessionStorage.setItem("logo", jsonData.person.logo);
-        //   sessionStorage.setItem("address", jsonData.person.address);
-        //   sessionStorage.setItem("status", jsonData.person.status);
-        //   sessionStorage.setItem("loggedIn", JSON.stringify(true));
-        //   dispatch(
-        //     changeAll({
-        //       name: jsonData.person.name,
-        //       email: jsonData.person.email,
-        //       reg: jsonData.person.reg,
-        //       logo: jsonData.person.logo,
-        //       address: jsonData.person.address,
-        //       status: jsonData.person.status,
-        //       loggedIn: true,
-        //       isAuthenticating: false,
-        //     })
-        //   );
-        //   sessionStorage.setItem("token", "Bearer " + jsonData.token);
-        //   return location.pathname === "/login"
-        //     ? navigate("/user/dashboard")
-        //     : "";
-        // }
-      });
+      })
       // .then(function (data) {
       //   sessionStorage.setItem("token", "Bearer " + data.token);
       //   return navigate("/dashboard");

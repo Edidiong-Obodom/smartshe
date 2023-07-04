@@ -82,15 +82,15 @@ const DashBoard = () => {
 
   return (
     <>
-      {/* <div className="flexi">
+      <div className="flexi">
         <AuthNavUser />
         <div className="flexiR">{dashBody()}</div>
       </div>
       <div className="smallNav">
         <AuthNavUser />
         {dashBody()}
-      </div> */}
-    <Four0Four />
+      </div>
+    {/* <Four0Four /> */}
     </>
   );
 };
